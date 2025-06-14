@@ -9,5 +9,7 @@ package com.mycompany.registroinasistencias.Main;
  * @author massi
  */
 public class RegistroInasistencias {
-    
+    public static void Main(String[] args){
+        
+    }
 }
