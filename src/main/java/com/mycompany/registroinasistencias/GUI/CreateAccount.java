@@ -58,6 +58,11 @@ public class CreateAccount extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonCreateAccount.setText("Crear");
+        buttonCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateAccountActionPerformed(evt);
+            }
+        });
 
         buttonReturn.setText("Volver");
         buttonReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -90,13 +95,14 @@ public class CreateAccount extends javax.swing.JFrame {
                     .addComponent(labelCI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buttonCreateAccount)
-                    .addComponent(textFieldName)
-                    .addComponent(textFieldCI)
-                    .addComponent(textFieldUsername)
-                    .addComponent(passwordFieldPassword)
-                    .addComponent(passwordFieldRepeat, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(textFieldName)
+                        .addComponent(textFieldCI)
+                        .addComponent(textFieldUsername)
+                        .addComponent(passwordFieldPassword)
+                        .addComponent(passwordFieldRepeat, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                    .addComponent(buttonCreateAccount, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,10 +143,14 @@ public class CreateAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        AccountOptions accountOptions = new AccountOptions();
         accountOptions.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
+
+    private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
+        login.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     /**
      * @param args the command line arguments

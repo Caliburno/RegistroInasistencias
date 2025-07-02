@@ -133,13 +133,11 @@ public class AccountOptions extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void buttonCreateAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountOptionsActionPerformed
-        CreateAccount createAccount = new CreateAccount();
         createAccount.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_buttonCreateAccountOptionsActionPerformed

@@ -11,9 +11,14 @@ package com.mycompany.registroinasistencias.GUI;
 public class Login extends javax.swing.JFrame {
 
     private MainMenu mainMenu;
+    private CreateAccount createAccount;
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
+    }
+    
+    public void setCreateAccount(CreateAccount createAccount) {
+        this.createAccount = createAccount;
     }
     
     /**
@@ -44,6 +49,11 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonLogin.setText("Ingresar");
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonLoginActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Bienvenido a AusentApp");
@@ -59,6 +69,11 @@ public class Login extends javax.swing.JFrame {
         labelPasswordLogin.setText("Contraseña");
 
         buttonCreateAccount.setText("Crear");
+        buttonCreateAccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateAccountActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("No tienes una cuenta?");
 
@@ -130,6 +145,16 @@ public class Login extends javax.swing.JFrame {
     private void textfieldUsernameLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldUsernameLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textfieldUsernameLoginActionPerformed
+
+    private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
+        createAccount.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonCreateAccountActionPerformed
+
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
+        mainMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
     /**
      * @param args the command line arguments

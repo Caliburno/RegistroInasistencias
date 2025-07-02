@@ -33,13 +33,15 @@
                   <Component id="labelName" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="buttonCreateAccount" min="-2" max="-2" attributes="0"/>
-                  <Component id="textFieldName" alignment="0" max="32767" attributes="0"/>
-                  <Component id="textFieldCI" alignment="0" max="32767" attributes="0"/>
-                  <Component id="textFieldUsername" alignment="0" max="32767" attributes="0"/>
-                  <Component id="passwordFieldPassword" alignment="0" max="32767" attributes="0"/>
-                  <Component id="passwordFieldRepeat" alignment="0" pref="172" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="textFieldName" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textFieldCI" alignment="0" max="32767" attributes="0"/>
+                      <Component id="textFieldUsername" alignment="0" max="32767" attributes="0"/>
+                      <Component id="passwordFieldPassword" alignment="0" max="32767" attributes="0"/>
+                      <Component id="passwordFieldRepeat" alignment="0" pref="172" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="buttonCreateAccount" min="-2" pref="72" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="163" max="32767" attributes="0"/>
           </Group>
@@ -102,6 +104,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCreateAccountActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonReturn">
       <Properties>

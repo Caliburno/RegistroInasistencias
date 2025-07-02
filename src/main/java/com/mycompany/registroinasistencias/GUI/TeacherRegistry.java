@@ -236,9 +236,8 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     /**

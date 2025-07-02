@@ -92,6 +92,11 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableAbsenceRegistryMain);
 
         buttonCloseDisplay.setText("Cerrar Display");
+        buttonCloseDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCloseDisplayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,15 +167,17 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonShowDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowDisplayActionPerformed
-        Display display = new Display();
         display.setVisible(true);
     }//GEN-LAST:event_buttonShowDisplayActionPerformed
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
-        this.dispose();
+        this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
+
+    private void buttonCloseDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseDisplayActionPerformed
+        display.setVisible(false);
+    }//GEN-LAST:event_buttonCloseDisplayActionPerformed
 
     /**
      * @param args the command line arguments
