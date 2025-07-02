@@ -44,6 +44,11 @@ public class CreateAccount extends javax.swing.JFrame {
         buttonCreateAccount.setText("Crear");
 
         buttonReturn.setText("Volver");
+        buttonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReturnActionPerformed(evt);
+            }
+        });
 
         labelName.setText("Nombre");
 
@@ -114,6 +119,12 @@ public class CreateAccount extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
+        AccountOptions accountOptions = new AccountOptions();
+        accountOptions.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonReturnActionPerformed
 
     /**
      * @param args the command line arguments

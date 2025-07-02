@@ -38,10 +38,25 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuHeader.setText("Menú Principal");
 
         buttonTeacherRegistry.setText("Fichas Docentes");
+        buttonTeacherRegistry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTeacherRegistryActionPerformed(evt);
+            }
+        });
 
         buttonAbsenceRegistry.setText("Ingreso Inasistencias");
+        buttonAbsenceRegistry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAbsenceRegistryActionPerformed(evt);
+            }
+        });
 
         buttonAccountOptions.setText("Opciones de Cuenta");
+        buttonAccountOptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAccountOptionsActionPerformed(evt);
+            }
+        });
 
         buttonExit.setText("Salir");
 
@@ -83,6 +98,24 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonTeacherRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTeacherRegistryActionPerformed
+        TeacherRegistry teacherRegistry = new TeacherRegistry();
+        teacherRegistry.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonTeacherRegistryActionPerformed
+
+    private void buttonAbsenceRegistryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAbsenceRegistryActionPerformed
+        AbsenceRegistry absenceRegistry = new AbsenceRegistry();
+        absenceRegistry.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonAbsenceRegistryActionPerformed
+
+    private void buttonAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAccountOptionsActionPerformed
+        AccountOptions accountOptions = new AccountOptions();
+        accountOptions.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonAccountOptionsActionPerformed
 
     /**
      * @param args the command line arguments

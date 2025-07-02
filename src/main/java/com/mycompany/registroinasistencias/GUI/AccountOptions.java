@@ -51,8 +51,18 @@ public class AccountOptions extends javax.swing.JFrame {
         buttonCHangePassword.setText("Cambiar");
 
         buttonCreateAccountOptions.setText("Crear cuenta");
+        buttonCreateAccountOptions.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateAccountOptionsActionPerformed(evt);
+            }
+        });
 
         buttonReturn.setText("Volver");
+        buttonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReturnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +120,18 @@ public class AccountOptions extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonReturnActionPerformed
+
+    private void buttonCreateAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountOptionsActionPerformed
+        CreateAccount createAccount = new CreateAccount();
+        createAccount.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonCreateAccountOptionsActionPerformed
 
     /**
      * @param args the command line arguments

@@ -124,11 +124,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear cuenta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCreateAccountOptionsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonReturn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Volver"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonReturnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordFieldCurrent">
     </Component>

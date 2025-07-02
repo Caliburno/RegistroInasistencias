@@ -1,0 +1,29 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+
+package com.mycompany.registroinasistencias.Main;
+import com.mycompany.registroinasistencias.GUI.AbsenceRegistry;
+import com.mycompany.registroinasistencias.GUI.AccountOptions;
+import com.mycompany.registroinasistencias.GUI.CreateAccount;
+import com.mycompany.registroinasistencias.GUI.Display;
+import com.mycompany.registroinasistencias.GUI.Login;
+import com.mycompany.registroinasistencias.GUI.MainMenu;
+import com.mycompany.registroinasistencias.GUI.TeacherRegistry;
+/**
+ *
+ * @author massi
+ */
+public class AbsentAppMain {
+    public static void Main(String[] args){
+        AbsenceRegistry absenceRegistry = new AbsenceRegistry();
+        AccountOptions accountOptions = new AccountOptions();
+        CreateAccount createAccount = new CreateAccount();
+        Display display = new Display();
+        Login login = new Login();
+        MainMenu mainMenu = MainMenu();
+        TeacherRegistry teacherRegistry = new TeacherRegistry();
+        
+    }
+}

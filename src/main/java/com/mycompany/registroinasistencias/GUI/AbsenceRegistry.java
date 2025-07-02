@@ -54,8 +54,18 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         buttonAddTeacher.setText("Agregar");
 
         buttonReturn.setText("Volver");
+        buttonReturn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonReturnActionPerformed(evt);
+            }
+        });
 
         buttonShowDisplay.setText("Mostrar");
+        buttonShowDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonShowDisplayActionPerformed(evt);
+            }
+        });
 
         tableAbsenceRegistryMain.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -139,6 +149,17 @@ public class AbsenceRegistry extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buttonShowDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShowDisplayActionPerformed
+        Display display = new Display();
+        display.setVisible(true);
+    }//GEN-LAST:event_buttonShowDisplayActionPerformed
+
+    private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonReturnActionPerformed
 
     /**
      * @param args the command line arguments

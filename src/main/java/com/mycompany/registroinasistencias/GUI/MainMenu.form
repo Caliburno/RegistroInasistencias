@@ -77,16 +77,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Fichas Docentes"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonTeacherRegistryActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonAbsenceRegistry">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ingreso Inasistencias"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAbsenceRegistryActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonAccountOptions">
       <Properties>
         <Property name="text" type="java.lang.String" value="Opciones de Cuenta"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAccountOptionsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonExit">
       <Properties>
