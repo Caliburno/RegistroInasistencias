@@ -13,6 +13,8 @@ public class CreateAccount extends javax.swing.JFrame {
     private MainMenu mainMenu;
     private AccountOptions accountOptions;
     private Login login;
+    private boolean showVolver = false;
+    
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -26,11 +28,16 @@ public class CreateAccount extends javax.swing.JFrame {
         this.login = login;
     }
     
+    public void setVolver(boolean mostrar) {
+        this.showVolver = mostrar;
+    }
+    
     /**
      * Creates new form CreateAccount
      */
     public CreateAccount() {
         initComponents();
+        buttonReturn.setVisible(showVolver);
     }
 
     /**

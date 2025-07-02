@@ -140,6 +140,7 @@ public class AccountOptions extends javax.swing.JFrame {
     private void buttonCreateAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountOptionsActionPerformed
         createAccount.setVisible(true);
         this.setVisible(false);
+        createAccount.setVolver(true);
     }//GEN-LAST:event_buttonCreateAccountOptionsActionPerformed
 
     /**
@@ -173,6 +174,7 @@ public class AccountOptions extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AccountOptions().setVisible(true);
+                
             }
         });
     }

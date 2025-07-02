@@ -45,6 +45,7 @@ public class Login extends javax.swing.JFrame {
         buttonCreateAccount = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         passwordfieldLogin = new javax.swing.JPasswordField();
+        butonExitLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,13 @@ public class Login extends javax.swing.JFrame {
 
         passwordfieldLogin.setText("jPasswordField1");
 
+        butonExitLogin.setText("Salir");
+        butonExitLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butonExitLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -86,7 +94,9 @@ public class Login extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(butonExitLogin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -135,7 +145,9 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buttonCreateAccount)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonCreateAccount)
+                    .addComponent(butonExitLogin))
                 .addContainerGap())
         );
 
@@ -149,12 +161,17 @@ public class Login extends javax.swing.JFrame {
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
         createAccount.setVisible(true);
         this.setVisible(false);
+        createAccount.setVolver(true);
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         mainMenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_buttonLoginActionPerformed
+
+    private void butonExitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonExitLoginActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_butonExitLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +209,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butonExitLogin;
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonLogin;
     private javax.swing.JLabel jLabel1;
