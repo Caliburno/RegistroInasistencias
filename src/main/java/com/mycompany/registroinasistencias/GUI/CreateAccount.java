@@ -10,6 +10,22 @@ package com.mycompany.registroinasistencias.GUI;
  */
 public class CreateAccount extends javax.swing.JFrame {
 
+    private MainMenu mainMenu;
+    private AccountOptions accountOptions;
+    private Login login;
+    
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+    
+    public void setAccountOptions(AccountOptions accountOptions) {
+        this.accountOptions = accountOptions;
+    }
+    
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+    
     /**
      * Creates new form CreateAccount
      */

@@ -22,8 +22,22 @@ public class AbsentAppMain {
         CreateAccount createAccount = new CreateAccount();
         Display display = new Display();
         Login login = new Login();
-        MainMenu mainMenu = MainMenu();
+        MainMenu mainMenu = new MainMenu();
         TeacherRegistry teacherRegistry = new TeacherRegistry();
+     
+        mainMenu.setAccountOptions(accountOptions);
+        mainMenu.setAbsenceRegistry(absenceRegistry);
+        mainMenu.setTeacherRegistry(teacherRegistry);
+        accountOptions.setMainMenu(mainMenu);
+        accountOptions.setCreateAccount(createAccount);
+        absenceRegistry.setMainMenu(mainMenu);
+        absenceRegistry.setDisplay(display);
+        createAccount.setAccountOptions(accountOptions);
+        createAccount.setLogin(login);
+        login.setMainMenu(mainMenu);
+        teacherRegistry.setMainMenu(mainMenu);
+        
+        login.setVisible(true);
         
     }
 }

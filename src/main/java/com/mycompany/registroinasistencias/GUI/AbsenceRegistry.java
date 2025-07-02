@@ -10,6 +10,17 @@ package com.mycompany.registroinasistencias.GUI;
  */
 public class AbsenceRegistry extends javax.swing.JFrame {
 
+    private MainMenu mainMenu;
+    private Display display;
+    
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+    
+    public void setDisplay(Display display) {
+        this.display = display;
+    }
+    
     /**
      * Creates new form RegistroInasistencias
      */

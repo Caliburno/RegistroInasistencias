@@ -3,13 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.registroinasistencias.GUI;
-
 /**
  *
  * @author Dario
  */
 public class TeacherRegistry extends javax.swing.JFrame {
 
+    private MainMenu mainMenu;
+    private Display display;
+    
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+    
+    public void setDisplay(Display display) {
+        this.display = display;
+    }
+    
+    
     /**
      * Creates new form MainFrame
      */

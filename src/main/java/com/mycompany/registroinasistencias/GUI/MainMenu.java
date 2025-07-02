@@ -10,6 +10,22 @@ package com.mycompany.registroinasistencias.GUI;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    private AbsenceRegistry absenceRegistry;
+    private AccountOptions accountOptions;
+    private TeacherRegistry teacherRegistry;
+    
+    public void setAbsenceRegistry(AbsenceRegistry abasenceRegistry) {
+        this.absenceRegistry = abasenceRegistry;
+    }
+    
+    public void setAccountOptions(AccountOptions accountOptions) {
+        this.accountOptions = accountOptions;
+    }
+    
+    public void setTeacherRegistry(TeacherRegistry teacherRegistry) {
+        this.teacherRegistry = teacherRegistry;
+    }
+    
     /**
      * Creates new form MainMenu
      */

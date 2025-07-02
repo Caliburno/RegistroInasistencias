@@ -10,6 +10,12 @@ package com.mycompany.registroinasistencias.GUI;
  */
 public class Login extends javax.swing.JFrame {
 
+    private MainMenu mainMenu;
+    
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+    
     /**
      * Creates new form Login
      */
