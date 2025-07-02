@@ -16,7 +16,7 @@ import com.mycompany.registroinasistencias.GUI.TeacherRegistry;
  * @author massi
  */
 public class AbsentAppMain {
-    public static void Main(String[] args){
+    public static void main(String[] args){
         AbsenceRegistry absenceRegistry = new AbsenceRegistry();
         AccountOptions accountOptions = new AccountOptions();
         CreateAccount createAccount = new CreateAccount();
@@ -35,6 +35,7 @@ public class AbsentAppMain {
         createAccount.setAccountOptions(accountOptions);
         createAccount.setLogin(login);
         login.setMainMenu(mainMenu);
+        login.setCreateAccount(createAccount);
         teacherRegistry.setMainMenu(mainMenu);
         
         login.setVisible(true);
