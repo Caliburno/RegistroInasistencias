@@ -12,6 +12,7 @@ public class Login extends javax.swing.JFrame {
 
     private MainMenu mainMenu;
     private CreateAccount createAccount;
+    private Display display;
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -19,6 +20,10 @@ public class Login extends javax.swing.JFrame {
     
     public void setCreateAccount(CreateAccount createAccount) {
         this.createAccount = createAccount;
+    }
+
+    public void setDisplay(Display display) {
+        this.display = display;
     }
     
     /**
@@ -159,9 +164,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_textfieldUsernameLoginActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
+        createAccount.setVolverToAccountOptions(false);
         createAccount.setVisible(true);
         this.setVisible(false);
-        createAccount.setVolver(true);
+
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
@@ -170,7 +176,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void butonExitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonExitLoginActionPerformed
+        display.dispose();
         this.dispose();
+        
     }//GEN-LAST:event_butonExitLoginActionPerformed
 
     /**

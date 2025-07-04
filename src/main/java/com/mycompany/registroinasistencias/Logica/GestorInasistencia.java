@@ -8,6 +8,10 @@ package com.mycompany.registroinasistencias.Logica;
  *
  * @author massi
  */
-public class Profesor {
+public class GestorInasistencia {
+    
+    public void /*DiaSemana*/ calculoDiaSemana(Inasistencia inasistencia){
+        
+    }
     
 }

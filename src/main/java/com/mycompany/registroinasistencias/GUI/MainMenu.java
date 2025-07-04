@@ -13,6 +13,7 @@ public class MainMenu extends javax.swing.JFrame {
     private AbsenceRegistry absenceRegistry;
     private AccountOptions accountOptions;
     private TeacherRegistry teacherRegistry;
+    private Display display;
     
     public void setAbsenceRegistry(AbsenceRegistry abasenceRegistry) {
         this.absenceRegistry = abasenceRegistry;
@@ -25,10 +26,11 @@ public class MainMenu extends javax.swing.JFrame {
     public void setTeacherRegistry(TeacherRegistry teacherRegistry) {
         this.teacherRegistry = teacherRegistry;
     }
+
+    public void setDisplay(Display display) {
+        this.display = display;
+    }
     
-    /**
-     * Creates new form MainMenu
-     */
     public MainMenu() {
         initComponents();
     }
@@ -136,6 +138,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAccountOptionsActionPerformed
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
+        display.dispose();
         this.dispose();
     }//GEN-LAST:event_buttonExitActionPerformed
 

@@ -138,9 +138,10 @@ public class AccountOptions extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void buttonCreateAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountOptionsActionPerformed
+        createAccount.setVolverToAccountOptions(true);
         createAccount.setVisible(true);
         this.setVisible(false);
-        createAccount.setVolver(true);
+        
     }//GEN-LAST:event_buttonCreateAccountOptionsActionPerformed
 
     /**

@@ -28,6 +28,7 @@ public class AbsentAppMain {
         mainMenu.setAccountOptions(accountOptions);
         mainMenu.setAbsenceRegistry(absenceRegistry);
         mainMenu.setTeacherRegistry(teacherRegistry);
+        mainMenu.setDisplay(display);
         accountOptions.setMainMenu(mainMenu);
         accountOptions.setCreateAccount(createAccount);
         absenceRegistry.setMainMenu(mainMenu);
@@ -36,6 +37,7 @@ public class AbsentAppMain {
         createAccount.setLogin(login);
         login.setMainMenu(mainMenu);
         login.setCreateAccount(createAccount);
+        login.setDisplay (display);
         teacherRegistry.setMainMenu(mainMenu);
         
         login.setVisible(true);

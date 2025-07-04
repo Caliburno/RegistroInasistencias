@@ -13,8 +13,7 @@ public class CreateAccount extends javax.swing.JFrame {
     private MainMenu mainMenu;
     private AccountOptions accountOptions;
     private Login login;
-    private boolean showVolver = false;
-    
+    private boolean volverToAccountOptions = false;
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -27,17 +26,15 @@ public class CreateAccount extends javax.swing.JFrame {
     public void setLogin(Login login) {
         this.login = login;
     }
-    
-    public void setVolver(boolean mostrar) {
-        this.showVolver = mostrar;
+
+    public void setVolverToAccountOptions(boolean volverToAccountOptions) {
+        this.volverToAccountOptions = volverToAccountOptions;
     }
-    
     /**
      * Creates new form CreateAccount
      */
     public CreateAccount() {
         initComponents();
-        buttonReturn.setVisible(showVolver);
     }
 
     /**
@@ -150,13 +147,18 @@ public class CreateAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        accountOptions.setVisible(true);
-        this.setVisible(false);
+        if (volverToAccountOptions) {
+            accountOptions.setVisible(true);
+            this.setVisible(false);
+        } else {
+            login.setVisible(true);
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
         login.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false); 
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     /**
