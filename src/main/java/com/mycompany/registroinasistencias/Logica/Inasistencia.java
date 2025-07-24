@@ -9,7 +9,7 @@ import java.time.LocalDate;
  * @author massi
  */
 public class Inasistencia {
-    
+     
     private Docente docente;
     private LocalDate desde;
     private LocalDate hasta;
@@ -19,8 +19,6 @@ public class Inasistencia {
         this.desde = desde;
         this.hasta = hasta;
     }
-
-    
     
     public Docente getDocente() {
         return docente;

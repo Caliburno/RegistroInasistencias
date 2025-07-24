@@ -4,6 +4,8 @@
  */
 package com.mycompany.registroinasistencias.Logica;
 
+import java.time.DayOfWeek;
+
 /**
  *
  * @author Dario
@@ -11,7 +13,7 @@ package com.mycompany.registroinasistencias.Logica;
 public class Asignatura {
     private String nombreAsignatura;
     private Grupo grupo;
-    private DiaSemana dia;
+    private DayOfWeek dia;
     private Turno turno;
 
     public String getNombreAsignatura() {
@@ -30,11 +32,11 @@ public class Asignatura {
         this.grupo = grupo;
     }
 
-    public DiaSemana getDia() {
+    public DayOfWeek getDia() {
         return dia;
     }
 
-    public void setDia(DiaSemana dia) {
+    public void setDia(DayOfWeek dia) {
         this.dia = dia;
     }
 
@@ -45,10 +47,8 @@ public class Asignatura {
     public void setTurno(Turno turno) {
         this.turno = turno;
     }
-
     
-    
-    public Asignatura(String nombreAsignatura, Grupo grupo, DiaSemana dia, Turno turno) {
+    public Asignatura(String nombreAsignatura, Grupo grupo, DayOfWeek dia, Turno turno) {
         this.nombreAsignatura = nombreAsignatura;
         this.grupo = grupo;
         this.dia = dia;

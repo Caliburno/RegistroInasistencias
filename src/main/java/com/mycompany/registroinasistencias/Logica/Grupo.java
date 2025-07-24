@@ -10,10 +10,19 @@ package com.mycompany.registroinasistencias.Logica;
  */
 public class Grupo {
     private String nombreGrupo;
-
+    private Turno turno;
+    
     public Grupo(String nombreGrupo) {
         this.nombreGrupo = nombreGrupo;
-    }    
+    }
+    
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
     
     public String getNombreGrupo() {
         return nombreGrupo;
@@ -22,6 +31,4 @@ public class Grupo {
     public void setNombreGrupo(String nombreGrupo) {
         this.nombreGrupo = nombreGrupo;
     }
-    
-    
 }
