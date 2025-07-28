@@ -4,14 +4,28 @@
  */
 package com.mycompany.registroinasistencias.Logica;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 /**
  *
  * @author massi
  */
+@Entity
 public class Docente {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int id;
     private String nombreDocente;
     private int CI;
+    @OneToMany
     private ArrayList<Asignatura> asignaturas;
+    @ManyToMany
+    private List<Grupo> grupos;
 
     public Docente(String nombreDocente, int CI, ArrayList<Asignatura> asignaturas) {
         this.nombreDocente = nombreDocente;

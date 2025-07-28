@@ -5,16 +5,33 @@
 package com.mycompany.registroinasistencias.Logica;
 
 import java.time.DayOfWeek;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Dario
  */
+@Entity
 public class Asignatura {
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+    private int id;
+    
     private String nombreAsignatura;
     private Grupo grupo;
     private DayOfWeek dia;
     private Turno turno;
+    @ManyToOne
+    private Docente docente;
+    @ManyToMany
+    private List<Grupo> grupos;
+    
 
     public String getNombreAsignatura() {
         return nombreAsignatura;
@@ -53,6 +70,14 @@ public class Asignatura {
         this.grupo = grupo;
         this.dia = dia;
         this.turno = turno;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
