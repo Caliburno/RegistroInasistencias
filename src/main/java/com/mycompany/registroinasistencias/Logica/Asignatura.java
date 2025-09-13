@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Logica;
 
 import java.time.DayOfWeek;
@@ -13,10 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-/**
- *
- * @author Dario
- */
 @Entity
 public class Asignatura {
     @Id
@@ -31,7 +23,6 @@ public class Asignatura {
     private Docente docente;
     @ManyToMany
     private List<Grupo> grupos;
-    
 
     public String getNombreAsignatura() {
         return nombreAsignatura;
@@ -79,6 +70,4 @@ public class Asignatura {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
 }
