@@ -4,18 +4,14 @@
  */
 package com.mycompany.registroinasistencias.Logica;
 import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 /**
  *
  * @author massi
  */
-@Entity
+
 public class Inasistencia {
-     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE)
+
     private int id;
     private Docente docente;
     private LocalDate desde;

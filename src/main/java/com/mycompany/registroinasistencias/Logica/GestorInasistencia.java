@@ -7,7 +7,7 @@ package com.mycompany.registroinasistencias.Logica;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.persistence.Entity;
+
 
 /**
  *
