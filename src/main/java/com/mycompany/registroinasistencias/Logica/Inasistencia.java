@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Logica;
-import java.time.LocalDate;
 
-/**
- *
- * @author massi
- */
+import java.time.LocalDate;
 
 public class Inasistencia {
 
@@ -45,8 +37,5 @@ public class Inasistencia {
 
     public void setHasta(LocalDate hasta) {
         this.hasta = hasta;
-    }
-    
-    
-    
+    }  
 }

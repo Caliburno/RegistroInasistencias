@@ -1,4 +1,5 @@
 package com.mycompany.registroinasistencias.Main;
+
 import com.mycompany.registroinasistencias.GUI.AbsenceRegistry;
 import com.mycompany.registroinasistencias.GUI.AccountOptions;
 import com.mycompany.registroinasistencias.GUI.CreateAccount;
@@ -6,10 +7,7 @@ import com.mycompany.registroinasistencias.GUI.Display;
 import com.mycompany.registroinasistencias.GUI.Login;
 import com.mycompany.registroinasistencias.GUI.MainMenu;
 import com.mycompany.registroinasistencias.GUI.TeacherRegistry;
-/**
- *
- * @author massi
- */
+
 public class AbsentAppMain {
     public static void main(String[] args){
         AbsenceRegistry absenceRegistry = new AbsenceRegistry();

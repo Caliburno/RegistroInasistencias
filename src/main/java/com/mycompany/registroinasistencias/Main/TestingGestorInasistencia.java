@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Main;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
@@ -14,14 +10,10 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author 56317473
- */
 public class TestingGestorInasistencia {
      public static void main(String[] args) {
-        // También puedes llamar a este método desde tu AbsentAppMain
-        testearGestorInasistencia();
+        
+         testearGestorInasistencia();
     }
     
     public static void testearGestorInasistencia() {
