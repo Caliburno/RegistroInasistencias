@@ -205,10 +205,12 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        if (mainMenu == null) {    } else {
+            mainMenu.setVisible(true); 
+        }
+    this.setVisible(false);       
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel headerAbsenceRegistry;
     private javax.swing.JButton jButton1;
