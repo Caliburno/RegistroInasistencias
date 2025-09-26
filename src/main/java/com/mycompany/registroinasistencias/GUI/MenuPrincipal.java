@@ -1,21 +1,21 @@
 package com.mycompany.registroinasistencias.GUI;
 
-public class MainMenu extends javax.swing.JFrame {
+public class MenuPrincipal extends javax.swing.JFrame {
 
-    private AbsenceRegistry absenceRegistry;
-    private AccountOptions accountOptions;
-    private TeacherRegistry teacherRegistry;
+    private RegistroInasistencias absenceRegistry;
+    private OpcionesDeCuenta accountOptions;
+    private RegistroDocentes teacherRegistry;
     private Display display;
     
-    public void setAbsenceRegistry(AbsenceRegistry abasenceRegistry) {
+    public void setAbsenceRegistry(RegistroInasistencias abasenceRegistry) {
         this.absenceRegistry = abasenceRegistry;
     }
     
-    public void setAccountOptions(AccountOptions accountOptions) {
+    public void setAccountOptions(OpcionesDeCuenta accountOptions) {
         this.accountOptions = accountOptions;
     }
     
-    public void setTeacherRegistry(TeacherRegistry teacherRegistry) {
+    public void setTeacherRegistry(RegistroDocentes teacherRegistry) {
         this.teacherRegistry = teacherRegistry;
     }
 
@@ -23,7 +23,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.display = display;
     }
     
-    public MainMenu() {
+    public MenuPrincipal() {
     initComponents();
     
     this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
@@ -197,7 +197,7 @@ public class MainMenu extends javax.swing.JFrame {
 public static void main(String args[]) {
     java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
-            MainMenu ventana = new MainMenu();
+            MenuPrincipal ventana = new MenuPrincipal();
             ventana.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
             ventana.setVisible(true);
         }

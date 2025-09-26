@@ -1,19 +1,19 @@
 package com.mycompany.registroinasistencias.GUI;
 
-public class AccountOptions extends javax.swing.JFrame {
+public class OpcionesDeCuenta extends javax.swing.JFrame {
 
-    private MainMenu mainMenu;
-    private CreateAccount createAccount;
+    private MenuPrincipal mainMenu;
+    private CrearCuenta createAccount;
     
-    public void setMainMenu(MainMenu mainMenu) {
+    public void setMainMenu(MenuPrincipal mainMenu) {
         this.mainMenu = mainMenu;
     }
     
-    public void setCreateAccount(CreateAccount createAccount) {
+    public void setCreateAccount(CrearCuenta createAccount) {
         this.createAccount = createAccount;
     }
     
-    public AccountOptions() {
+    public OpcionesDeCuenta() {
     initComponents();
     this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH); 
 }

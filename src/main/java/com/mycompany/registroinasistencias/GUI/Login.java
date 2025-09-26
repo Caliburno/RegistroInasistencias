@@ -2,15 +2,15 @@ package com.mycompany.registroinasistencias.GUI;
 
 public class Login extends javax.swing.JFrame {
 
-    private MainMenu mainMenu;
-    private CreateAccount createAccount;
+    private MenuPrincipal mainMenu;
+    private CrearCuenta createAccount;
     private Display display;
     
-    public void setMainMenu(MainMenu mainMenu) {
+    public void setMainMenu(MenuPrincipal mainMenu) {
         this.mainMenu = mainMenu;
     }
     
-    public void setCreateAccount(CreateAccount createAccount) {
+    public void setCreateAccount(CrearCuenta createAccount) {
         this.createAccount = createAccount;
     }
 

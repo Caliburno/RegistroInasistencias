@@ -2,10 +2,10 @@ package com.mycompany.registroinasistencias.GUI;
 
 public class RegistroInasistencias extends javax.swing.JFrame {
 
-    private MainMenu mainMenu;
+    private MenuPrincipal mainMenu;
     private Display display;
     
-    public void setMainMenu(MainMenu mainMenu) {
+    public void setMainMenu(MenuPrincipal mainMenu) {
         this.mainMenu = mainMenu;
     }
     

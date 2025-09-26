@@ -1,11 +1,11 @@
 package com.mycompany.registroinasistencias.GUI;
 
-public class TeacherRegistry extends javax.swing.JFrame {
+public class RegistroDocentes extends javax.swing.JFrame {
 
-    private MainMenu mainMenu;
+    private MenuPrincipal mainMenu;
     private Display display;
     
-    public void setMainMenu(MainMenu mainMenu) {
+    public void setMainMenu(MenuPrincipal mainMenu) {
         this.mainMenu = mainMenu;
     }
     
@@ -17,7 +17,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public TeacherRegistry() {
+    public RegistroDocentes() {
     initComponents();
     this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH); 
 }

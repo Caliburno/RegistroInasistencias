@@ -1,22 +1,22 @@
 package com.mycompany.registroinasistencias.Main;
 
-import com.mycompany.registroinasistencias.GUI.AbsenceRegistry;
-import com.mycompany.registroinasistencias.GUI.AccountOptions;
-import com.mycompany.registroinasistencias.GUI.CreateAccount;
+import com.mycompany.registroinasistencias.GUI.RegistroInasistencias;
+import com.mycompany.registroinasistencias.GUI.OpcionesDeCuenta;
+import com.mycompany.registroinasistencias.GUI.CrearCuenta;
 import com.mycompany.registroinasistencias.GUI.Display;
 import com.mycompany.registroinasistencias.GUI.Login;
-import com.mycompany.registroinasistencias.GUI.MainMenu;
-import com.mycompany.registroinasistencias.GUI.TeacherRegistry;
+import com.mycompany.registroinasistencias.GUI.MenuPrincipal;
+import com.mycompany.registroinasistencias.GUI.RegistroDocentes;
 
 public class AbsentAppMain {
     public static void main(String[] args){
-        AbsenceRegistry absenceRegistry = new AbsenceRegistry();
-        AccountOptions accountOptions = new AccountOptions();
-        CreateAccount createAccount = new CreateAccount();
+        RegistroInasistencias absenceRegistry = new RegistroInasistencias();
+        OpcionesDeCuenta accountOptions = new OpcionesDeCuenta();
+        CrearCuenta createAccount = new CrearCuenta();
         Display display = new Display();
         Login login = new Login();
-        MainMenu mainMenu = new MainMenu();
-        TeacherRegistry teacherRegistry = new TeacherRegistry();
+        MenuPrincipal mainMenu = new MenuPrincipal();
+        RegistroDocentes teacherRegistry = new RegistroDocentes();
      
         mainMenu.setAccountOptions(accountOptions);
         mainMenu.setAbsenceRegistry(absenceRegistry);
