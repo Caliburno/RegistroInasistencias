@@ -10,16 +10,16 @@ public class GestorInasistencia {
         ArrayList<Grupo> gruposAfectados = new ArrayList<>();
 
         Docente docente = inasistencia.getDocente();
-        LocalDate desde = inasistencia.getDesde();
-        LocalDate hasta = inasistencia.getHasta();
+        LocalDate desde = inasistencia.getFechaDesde();
+        LocalDate hasta = inasistencia.getFechaHasta();
 
         LocalDate fecha = desde;
         while (!fecha.isAfter(hasta)) {
             DayOfWeek dia = fecha.getDayOfWeek(); 
 
-            for (Asignatura asignatura : docente.getAsignaturas()) {
-                if (asignatura.getDia().name().equals(dia.name())) {
-                    Grupo grupo = asignatura.getGrupo();
+            for (Horario horario : docente.getHorarios()) {
+                if (horario.getDiaSemana().name().equals(dia.name())) {
+                    Grupo grupo = horario.getaGrupo();
                     if (!gruposAfectados.contains(grupo)) {
                         gruposAfectados.add(grupo);
                     }

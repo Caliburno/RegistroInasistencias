@@ -4,15 +4,19 @@
  */
 package com.mycompany.registroinasistencias.Logica;
 
-import com.mycompany.registroinasistencias.Persistence.ControladoraPersistencia;
+
 
 /**
  *
  * @author barbarasilvacampbell
  */
 public class Controladora {
+
+    public boolean validarUsuario(String nombreUsu, String contraUsu) {
+        return true;
+    }
     
-    ControladoraPersistencia controladoraPersistencia = new ControladoraPersistencia();
+    
     
     
     

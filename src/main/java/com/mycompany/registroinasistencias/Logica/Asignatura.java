@@ -1,4 +1,4 @@
-package com.mycompany.registroinasistencias.Logica;
+ package com.mycompany.registroinasistencias.Logica;
 
 import java.time.DayOfWeek;
 import java.util.List;
@@ -6,16 +6,24 @@ import java.util.List;
 
 public class Asignatura {
 
-    private int id;
+   
     
     private String nombreAsignatura;
-    private Grupo grupo;
-    private DayOfWeek dia;
-    private Turno turno;
+    private List<Horario> horarios;
 
-    private Docente docente;
+
  
-    private List<Grupo> grupos;
+
+    public Asignatura() {
+    }
+
+    public Asignatura(String nombreAsignatura, List<Horario> horarios) {
+        this.nombreAsignatura = nombreAsignatura;
+        this.horarios = horarios;
+    }
+    
+    
+
 
     public String getNombreAsignatura() {
         return nombreAsignatura;
@@ -25,42 +33,21 @@ public class Asignatura {
         this.nombreAsignatura = nombreAsignatura;
     }
 
-    public Grupo getGrupo() {
-        return grupo;
+    public List<Horario> getHorarios() {
+        return horarios;
     }
 
-    public void setGrupo(Grupo grupo) {
-        this.grupo = grupo;
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
     }
 
-    public DayOfWeek getDia() {
-        return dia;
-    }
 
-    public void setDia(DayOfWeek dia) {
-        this.dia = dia;
-    }
-
-    public Turno getTurno() {
-        return turno;
-    }
-
-    public void setTurno(Turno turno) {
-        this.turno = turno;
-    }
     
-    public Asignatura(String nombreAsignatura, Grupo grupo, DayOfWeek dia, Turno turno) {
-        this.nombreAsignatura = nombreAsignatura;
-        this.grupo = grupo;
-        this.dia = dia;
-        this.turno = turno;
-    }
 
-    public int getId() {
-        return id;
-    }
+   
+    
+  
+  
+    
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }

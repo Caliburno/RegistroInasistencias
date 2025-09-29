@@ -6,18 +6,30 @@ import java.util.List;
 
 public class Grupo {
  
-    private int id;
-    private String nombreGrupo;
-    private Turno turno;
-
-    private List<Docente> docentes;
   
-    private List<Asignatura>asignaturas;
-    
-    public Grupo(String nombreGrupo) {
-        this.nombreGrupo = nombreGrupo;
+
+    private String name;
+    private Turno turno;
+    private List<Horario> horarios;
+
+    public Grupo() {
+
     }
-    
+
+    public Grupo(String name, Turno turno, List<Horario> horarios) {
+        this.name = name;
+        this.turno = turno;
+        this.horarios = horarios;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Turno getTurno() {
         return turno;
     }
@@ -25,12 +37,16 @@ public class Grupo {
     public void setTurno(Turno turno) {
         this.turno = turno;
     }
-    
-    public String getNombreGrupo() {
-        return nombreGrupo;
+
+    public List<Horario> getHorarios() {
+        return horarios;
     }
 
-    public void setNombreGrupo(String nombreGrupo) {
-        this.nombreGrupo = nombreGrupo;
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
     }
+ 
+    
+    
+   
 }
