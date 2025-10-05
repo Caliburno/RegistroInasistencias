@@ -28,7 +28,6 @@
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Component id="labelRepeatPassword" pref="140" max="32767" attributes="0"/>
                   <Component id="labelPassword" alignment="1" max="32767" attributes="0"/>
-                  <Component id="labelUsername" alignment="1" max="32767" attributes="0"/>
                   <Component id="labelCI" alignment="1" max="32767" attributes="0"/>
                   <Component id="labelName" alignment="1" max="32767" attributes="0"/>
               </Group>
@@ -37,7 +36,6 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="textFieldName" alignment="0" max="32767" attributes="0"/>
                       <Component id="textFieldCI" alignment="0" max="32767" attributes="0"/>
-                      <Component id="textFieldUsername" alignment="0" max="32767" attributes="0"/>
                       <Component id="passwordFieldPassword" alignment="0" max="32767" attributes="0"/>
                       <Component id="passwordFieldRepeat" alignment="0" pref="172" max="32767" attributes="0"/>
                   </Group>
@@ -65,12 +63,7 @@
                   <Component id="textFieldCI" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelCI" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textFieldUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="labelUsername" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="passwordFieldPassword" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelPassword" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -82,7 +75,7 @@
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="buttonCreateAccount" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="124" max="32767" attributes="0"/>
+              <EmptySpace pref="130" max="32767" attributes="0"/>
               <Component id="buttonReturn" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -93,8 +86,9 @@
     <Component class="javax.swing.JTextField" name="textFieldName">
     </Component>
     <Component class="javax.swing.JTextField" name="textFieldCI">
-    </Component>
-    <Component class="javax.swing.JTextField" name="textFieldUsername">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldCIActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordFieldPassword">
     </Component>
@@ -124,12 +118,6 @@
     <Component class="javax.swing.JLabel" name="labelCI">
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#xfa;mero de C&#xe9;dula"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="labelUsername">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Usuario"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelPassword">

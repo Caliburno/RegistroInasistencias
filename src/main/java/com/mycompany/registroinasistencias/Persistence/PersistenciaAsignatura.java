@@ -16,6 +16,10 @@ import java.sql.SQLException;
  * @author 56317473
  */
 public class PersistenciaAsignatura {
+
+    public PersistenciaAsignatura() {
+    }
+    
     private static final String SQL_GUARDAR_ASIGNATURA = "";
     private static final String SQL_LEER_ASIGNATURAS = "";
     private static final String SQL_LEER_ASIGNATURA = "";

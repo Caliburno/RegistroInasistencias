@@ -138,8 +138,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAccountOptionsActionPerformed
 
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
-        display.dispose();
+       display.dispose();
         this.dispose();
+        System.exit(0);
     }//GEN-LAST:event_buttonExitActionPerformed
 
     /**

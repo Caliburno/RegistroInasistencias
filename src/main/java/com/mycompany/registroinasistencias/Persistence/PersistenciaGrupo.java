@@ -12,6 +12,10 @@ import java.sql.ResultSet;
  * @author 56317473
  */
 public class PersistenciaGrupo {
+
+    public PersistenciaGrupo() {
+    }
+    
     private final static String SQL_GUARDAR_GRUPO = "";
     private final static String SQL_LEER_GRUPOS = "";
     private final static String SQL_LEER_GRUPO = "";

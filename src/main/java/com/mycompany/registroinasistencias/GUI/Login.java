@@ -4,12 +4,17 @@
  */
 package com.mycompany.registroinasistencias.GUI;
 
+import com.mycompany.registroinasistencias.Logica.Controladora;
+import java.util.Set;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dario
  */
 public class Login extends javax.swing.JFrame {
-
+    Controladora control = new Controladora();
     private MainMenu mainMenu;
     private CreateAccount createAccount;
     private Display display;
@@ -45,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         buttonLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         labelUsernameLogin = new javax.swing.JLabel();
-        textfieldUsernameLogin = new javax.swing.JTextField();
+        textfieldCiLogin = new javax.swing.JTextField();
         labelPasswordLogin = new javax.swing.JLabel();
         buttonCreateAccount = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -64,11 +69,11 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Bienvenido a AusentApp");
 
-        labelUsernameLogin.setText("Usuario");
+        labelUsernameLogin.setText("Cedula");
 
-        textfieldUsernameLogin.addActionListener(new java.awt.event.ActionListener() {
+        textfieldCiLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textfieldUsernameLoginActionPerformed(evt);
+                textfieldCiLoginActionPerformed(evt);
             }
         });
 
@@ -82,8 +87,6 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel4.setText("No tienes una cuenta?");
-
-        passwordfieldLogin.setText("jPasswordField1");
 
         butonExitLogin.setText("Salir");
         butonExitLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(88, 88, 88)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(passwordfieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textfieldUsernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(textfieldCiLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 83, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -140,7 +143,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(labelUsernameLogin)
                 .addGap(18, 18, 18)
-                .addComponent(textfieldUsernameLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textfieldCiLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(labelPasswordLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -159,9 +162,9 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textfieldUsernameLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldUsernameLoginActionPerformed
+    private void textfieldCiLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textfieldCiLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textfieldUsernameLoginActionPerformed
+    }//GEN-LAST:event_textfieldCiLoginActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
         createAccount.setVolverToAccountOptions(false);
@@ -171,13 +174,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        mainMenu.setVisible(true);
-        this.setVisible(false);
+        String ci = textfieldCiLogin.getText();
+        String password = passwordfieldLogin.getText();
+        if(control.verificarCI(ci)){
+            if(control.verificarUsuario(ci, password)){
+                mainMenu.setVisible(true);
+                this.setVisible(false);
+            }else{
+                mostrarMensaje("Usuario incorrecto", "Error", "Usuario no valido");
+            }
+        }else{
+            mostrarMensaje("No existe la Cedula, ingrese de nuevo", "Error", "Cedula incorrecta");
+        }
+        
+        
     }//GEN-LAST:event_buttonLoginActionPerformed
 
     private void butonExitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butonExitLoginActionPerformed
+        
         display.dispose();
         this.dispose();
+        System.exit(0);
         
     }//GEN-LAST:event_butonExitLoginActionPerformed
 
@@ -195,6 +212,19 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel labelPasswordLogin;
     private javax.swing.JLabel labelUsernameLogin;
     private javax.swing.JPasswordField passwordfieldLogin;
-    private javax.swing.JTextField textfieldUsernameLogin;
+    private javax.swing.JTextField textfieldCiLogin;
     // End of variables declaration//GEN-END:variables
+
+public void mostrarMensaje(String mensaje, String tipo, String titulo){
+                JOptionPane optionPane = new JOptionPane(mensaje);
+                if(tipo.equals("Info")){
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(tipo.equals("Error")){
+                    optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                }
+                JDialog dialog = optionPane.createDialog(titulo);
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+    }
 }

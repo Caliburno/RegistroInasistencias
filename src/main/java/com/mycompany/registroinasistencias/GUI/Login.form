@@ -47,7 +47,7 @@
                               <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="passwordfieldLogin" min="-2" pref="223" max="-2" attributes="0"/>
-                                  <Component id="textfieldUsernameLogin" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
+                                  <Component id="textfieldCiLogin" alignment="0" min="-2" pref="223" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -83,7 +83,7 @@
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Component id="labelUsernameLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="textfieldUsernameLogin" min="-2" max="-2" attributes="0"/>
+              <Component id="textfieldCiLogin" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="labelPasswordLogin" min="-2" pref="16" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -121,12 +121,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="labelUsernameLogin">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Usuario"/>
+        <Property name="text" type="java.lang.String" value="Cedula"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textfieldUsernameLogin">
+    <Component class="javax.swing.JTextField" name="textfieldCiLogin">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textfieldUsernameLoginActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textfieldCiLoginActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelPasswordLogin">
@@ -148,9 +148,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordfieldLogin">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="butonExitLogin">
       <Properties>

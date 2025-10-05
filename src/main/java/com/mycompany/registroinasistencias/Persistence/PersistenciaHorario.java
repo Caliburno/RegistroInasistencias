@@ -14,6 +14,10 @@ import java.sql.SQLException;
  * @author 56317473
  */
 public class PersistenciaHorario {
+
+    public PersistenciaHorario() {
+    }
+    
     private final static String SQL_GUARDAR_HORARIO = "";
     private final static String SQL_LEER_HORARIOS = "";
     private final static String SQL_LEER_HORARIO = "";

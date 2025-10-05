@@ -12,6 +12,10 @@ import java.sql.ResultSet;
  * @author 56317473
  */
 public class PersistenciaDocente {
+
+    public PersistenciaDocente() {
+    }
+    
     private final static String SQL_GUARDAR_DOCENTE = "";
     private final static String SQL_LEER_DOCENTES = "";
     private final static String SQL_LEER_DOCENTE = "";

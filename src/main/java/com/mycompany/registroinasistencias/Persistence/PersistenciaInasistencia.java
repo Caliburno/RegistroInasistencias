@@ -12,6 +12,10 @@ import java.sql.ResultSet;
  * @author 56317473
  */
 public class PersistenciaInasistencia {
+
+    public PersistenciaInasistencia() {
+    }
+    
     private final static String SQL_GUARDAR_INASISTENCIA = "";
     private final static String SQL_LEER_INASISTENCIAS = "";
     private final static String SQL_LEER_INASISTENCIA = "";
