@@ -19,7 +19,8 @@ public class PersistenciaUsuario {
 
     public PersistenciaUsuario() {
     }
-    
+    //borrar
+    int cero = 0;
     private final static String SQL_GUARDAR_USUARIO =("INSERT INTO ausentbase.Usuario(name,ci,password) VALUES (?,?,?)");
     private final static String SQL_BUSCAR_USUARIO = ("SELECT password FROM ausentbase.Usuario WHERE ci = ? ");
     private final static String SQL_BUSCAR_CI = ("SELECT ci FROM ausentbase.Usuario WHERE ci = ?");
