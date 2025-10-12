@@ -8,33 +8,36 @@ public class Docente {
 
 
 
-    private int ci;
+    private String ci;
     private String name;
     private String mail;
     private int tel;
     private String grado;
+    private Asignatura anAsignatura;
     private List<Inasistencia> inasistencias;
     private List<Horario> horarios;
 
     public Docente() {
     }
 
-    public Docente(int ci, String name, String mail, int tel, String grado, List<Inasistencia> inasistencias, List<Horario> horarios) {
+    public Docente(String ci, String name, String mail, int tel, String grado, Asignatura anAsignatura, List<Inasistencia> inasistencias, List<Horario> horarios) {
         this.ci = ci;
         this.name = name;
         this.mail = mail;
         this.tel = tel;
         this.grado = grado;
+        this.anAsignatura = anAsignatura;
         this.inasistencias = inasistencias;
         this.horarios = horarios;
-
     }
 
-    public int getCi() {
+    
+
+    public String getCi() {
         return ci;
     }
 
-    public void setCi(int ci) {
+    public void setCi(String ci) {
         this.ci = ci;
     }
 
@@ -70,6 +73,15 @@ public class Docente {
     public void setGrado(String grado) {
         this.grado = grado;
     }
+
+    public Asignatura getAnAsignatura() {
+        return anAsignatura;
+    }
+
+    public void setAnAsignatura(Asignatura anAsignatura) {
+        this.anAsignatura = anAsignatura;
+    }
+    
 
     public List<Inasistencia> getInasistencias() {
         return inasistencias;

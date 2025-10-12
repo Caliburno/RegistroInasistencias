@@ -5,6 +5,8 @@
 package com.mycompany.registroinasistencias.Logica;
 
 import com.mycompany.registroinasistencias.Persistence.ControladoraPersistencia;
+import java.time.DayOfWeek;
+import java.time.LocalTime;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -44,6 +46,29 @@ public class Controladora {
         
         controlPersis.guardarUsuario(usu);
         
+    }
+
+    public void crearDocente(String nameDocente, String ciDocente) {
+       
+        Docente doce = new Docente();
+        doce.setName(nameDocente);
+        doce.setCi(ciDocente);
+        controlPersis.guardarDocente(doce);
+    }
+
+    public void guardarHorario(String days, String group, String turno, String docente) {
+        Horario hora = new Horario();
+        hora.setDiaSemana(DayOfWeek.valueOf(days.toUpperCase()));
+        hora.getaGrupo().getName();
+        hora.getaDocente().getCi();
+        hora.setTurno(Turno.valueOf(turno.toUpperCase()));
+        controlPersis.guardarHorario(hora);
+    }
+
+    public void guardarAsignatura(String nameSubject) {
+        Asignatura asig = new Asignatura();
+        asig.setNombreAsignatura(nameSubject);
+        controlPersis.guardarAsignatura(asig);
     }
 
     

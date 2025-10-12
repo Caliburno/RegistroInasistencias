@@ -20,7 +20,7 @@ public class PersistenciaAsignatura {
     public PersistenciaAsignatura() {
     }
     
-    private static final String SQL_GUARDAR_ASIGNATURA = "";
+    private static final String SQL_GUARDAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(NAME)VALUES (?)");
     private static final String SQL_LEER_ASIGNATURAS = "";
     private static final String SQL_LEER_ASIGNATURA = "";
     private static final String SQL_ELIMINAR_ASIGNATURA = "";
@@ -37,18 +37,19 @@ public class PersistenciaAsignatura {
             Connection con =  cone.getConnection();
             
             ps = (PreparedStatement) con.prepareStatement(SQL_GUARDAR_ASIGNATURA);
+            //System.out.println(asignatura.getNombreAsignatura());
             ps.setString(1, asignatura.getNombreAsignatura());
             
-            if (asignatura.getHorarios() != null && !asignatura.getHorarios().isEmpty()) {
+           /* if (asignatura.getHorarios() != null && !asignatura.getHorarios().isEmpty()) {
             for (Horario horario : asignatura.getHorarios()) {
                 
             }
-        }
+        }*/
             
             
             resultado = ps.executeUpdate();
         }catch(SQLException e){
-            throw new Exception("Error al conectarse con la Base de Datos");
+            throw new Exception("Error al conectarse con la Base de Datos" + e);
         }
     }
 }

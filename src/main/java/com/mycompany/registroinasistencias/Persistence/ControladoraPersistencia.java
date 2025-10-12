@@ -4,6 +4,9 @@
  */
 package com.mycompany.registroinasistencias.Persistence;
 
+import com.mycompany.registroinasistencias.Logica.Asignatura;
+import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Horario;
 import com.mycompany.registroinasistencias.Logica.Usuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -56,5 +59,30 @@ public class ControladoraPersistencia {
         }
        return result;
    }
+
+    public void guardarDocente(Docente doce) {
+        try {
+            perDoce.guardarDocente(doce);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void guardarAsignatura(Asignatura asig) {
+        try {
+            perAsig.guardarAsignatura(asig);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void guardarHorario(Horario hora) {
+        try {
+            perHora.guardarHorario(hora);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     
 }

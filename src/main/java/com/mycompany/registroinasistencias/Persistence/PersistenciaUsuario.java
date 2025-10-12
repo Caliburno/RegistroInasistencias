@@ -19,8 +19,7 @@ public class PersistenciaUsuario {
 
     public PersistenciaUsuario() {
     }
-    //borrar
-    int cero = 0;
+    
     private final static String SQL_GUARDAR_USUARIO =("INSERT INTO ausentbase.Usuario(name,ci,password) VALUES (?,?,?)");
     private final static String SQL_BUSCAR_USUARIO = ("SELECT password FROM ausentbase.Usuario WHERE ci = ? ");
     private final static String SQL_BUSCAR_CI = ("SELECT ci FROM ausentbase.Usuario WHERE ci = ?");
@@ -36,7 +35,7 @@ public class PersistenciaUsuario {
         try(Connection con = cone.getConnection();
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_GUARDAR_USUARIO);){
             
-            int resultado = 0;
+           // int resultado = 0;
             
             
             ps.setString(1, usu.getName()); 
@@ -47,12 +46,10 @@ public class PersistenciaUsuario {
              ps.setString(3, usu.getPassword());
              System.out.println(usu.getPassword());
              
-             resultado = ps.executeUpdate();
+             //resultado = ps.executeUpdate();
              
              
-             if (!con.getAutoCommit()) {
-                con.commit();
-            }
+            
              
              con.close();
         }catch(SQLException e){
