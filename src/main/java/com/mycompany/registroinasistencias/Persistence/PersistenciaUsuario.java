@@ -35,7 +35,7 @@ public class PersistenciaUsuario {
         try(Connection con = cone.getConnection();
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_GUARDAR_USUARIO);){
             
-           // int resultado = 0;
+            int resultado = 0;
             
             
             ps.setString(1, usu.getName()); 
@@ -46,7 +46,7 @@ public class PersistenciaUsuario {
              ps.setString(3, usu.getPassword());
              System.out.println(usu.getPassword());
              
-             //resultado = ps.executeUpdate();
+             resultado = ps.executeUpdate();
              
              
             

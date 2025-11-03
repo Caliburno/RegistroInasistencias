@@ -5,6 +5,8 @@
 package com.mycompany.registroinasistencias.GUI;
 
 import com.mycompany.registroinasistencias.Logica.Controladora;
+import com.mycompany.registroinasistencias.Logica.Docente;
+import java.util.List;
 
 /**
  *
@@ -304,7 +306,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private void buttonAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddTeacherActionPerformed
         String nameDocente = textFieldName.getText();
         String ciDocente = textFieldCI.getText();
-        
+        control.guardarDocente(ciDocente, nameDocente);
         textFieldCI.setText("");
         textFieldName.setText("");
     }//GEN-LAST:event_buttonAddTeacherActionPerformed
@@ -315,6 +317,12 @@ public class TeacherRegistry extends javax.swing.JFrame {
         String group = textFieldGroup.getText();
         String turno = (String) cmbTurno.getSelectedItem();
         String docente = (String) cmbTeachers.getSelectedItem();
+        
+        control.guardarAsignatura(nameSubject, days, group, turno, docente);
+        textFieldSubjectName.setText("");
+        textFieldWeekDays.setText("");
+        textFieldGroup.setText("");
+        
      
     }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
 
@@ -324,7 +332,12 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
     //aca recorrer todos los docentes
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        List<Docente> listaDocente = control.traerDocentes();
+        if(listaDocente != null){
+            for(Docente d : listaDocente){
+                cmbTeachers.addItem(d.getNombreDocente());
+            }
+        }
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTurnoActionPerformed

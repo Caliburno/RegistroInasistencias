@@ -11,6 +11,11 @@ public class Docente {
     private ArrayList<Asignatura> asignaturas;
     private List<Grupo> grupos;
 
+    public Docente() {
+    }
+    
+    
+
     public Docente(String nombreDocente, String CI, ArrayList<Asignatura> asignaturas) {
         this.nombreDocente = nombreDocente;
         this.CI = CI;

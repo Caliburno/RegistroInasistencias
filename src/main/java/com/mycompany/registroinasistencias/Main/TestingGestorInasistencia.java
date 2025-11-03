@@ -55,7 +55,7 @@ public class TestingGestorInasistencia {
         asignaturas.add(fisica3C_viernes);
         
         // 3. Crear docente
-        Docente docente = new Docente("Juan Pérez", 12345678, asignaturas);
+        Docente docente = new Docente("Juan Pérez", "12345678", asignaturas);
         
         System.out.println("Docente creado: " + docente.getNombreDocente());
         System.out.println("Asignaturas del docente:");

@@ -48,6 +48,24 @@ public class Controladora {
         
     }
 
+    public void guardarDocente(String ciDocente, String nameDocente) {
+        Docente doce = new Docente();
+        
+        doce.setCI(ciDocente);
+        System.out.println("esta es la controladora: " + doce.getCI());
+        doce.setNombreDocente(nameDocente);
+        System.out.println("esta es la controladora: " + doce.getNombreDocente());
+        controlPersis.guardarDocente(doce);
+    }
+
+    public void guardarAsignatura(String nameSubject, String days, String group, String turno, String docente) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public List<Docente> traerDocentes() {
+        return controlPersis.traerDocentes();
+    }
+
    
     
     

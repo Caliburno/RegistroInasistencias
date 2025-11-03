@@ -58,6 +58,25 @@ public class ControladoraPersistencia {
        return result;
    }
 
+    public void guardarDocente(Docente doce) {
+        try {
+            perDoce.guardarDocente(doce);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public List<Docente> traerDocentes() {
+        try {
+            return perDoce.traerDocentes();
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
+    }
+
+    
   
   
 
