@@ -3,7 +3,6 @@ package com.mycompany.registroinasistencias.Logica;
 public class Usuario {
     private String name;
     private String ci;
-   
     private String password;
 
     public Usuario() {

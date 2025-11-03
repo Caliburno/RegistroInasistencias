@@ -3,27 +3,25 @@ package com.mycompany.registroinasistencias.Logica;
 import java.time.DayOfWeek;
 import java.util.List;
 
-
 public class Asignatura {
 
-   
-    
     private String nombreAsignatura;
-    private List<Horario> horarios;
+    private Grupo grupo;
+    private DayOfWeek dia;
+    private Turno turno;
 
-
- 
+    private Docente docente;
 
     public Asignatura() {
     }
 
-    public Asignatura(String nombreAsignatura, List<Horario> horarios) {
+    public Asignatura(String nombreAsignatura, Grupo grupo, DayOfWeek dia, Turno turno, Docente docente) {
         this.nombreAsignatura = nombreAsignatura;
-        this.horarios = horarios;
+        this.grupo = grupo;
+        this.dia = dia;
+        this.turno = turno;
+        this.docente = docente;
     }
-    
-    
-
 
     public String getNombreAsignatura() {
         return nombreAsignatura;
@@ -33,21 +31,43 @@ public class Asignatura {
         this.nombreAsignatura = nombreAsignatura;
     }
 
-    public List<Horario> getHorarios() {
-        return horarios;
+    public Grupo getGrupo() {
+        return grupo;
     }
 
-    public void setHorarios(List<Horario> horarios) {
-        this.horarios = horarios;
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
+    public DayOfWeek getDia() {
+        return dia;
+    }
+
+    public void setDia(DayOfWeek dia) {
+        this.dia = dia;
+    }
+
+    public Turno getTurno() {
+        return turno;
+    }
+
+    public void setTurno(Turno turno) {
+        this.turno = turno;
+    }
+
+    public Docente getDocente() {
+        return docente;
+    }
+
+    public void setDocente(Docente docente) {
+        this.docente = docente;
+    }
 
     
-
    
     
   
-  
-    
 
+
+    
 }

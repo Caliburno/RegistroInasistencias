@@ -1,33 +1,37 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.registroinasistencias.Logica;
 
 import java.util.List;
 
-
-
 public class Grupo {
- 
-  
 
-    private String name;
+  
+    private String nombreGrupo;
     private Turno turno;
-    private List<Horario> horarios;
+  
+    private List<Docente> docentes;
+ 
+    private List<Asignatura>asignaturas;
 
     public Grupo() {
-
     }
 
-    public Grupo(String name, Turno turno, List<Horario> horarios) {
-        this.name = name;
+    public Grupo(String nombreGrupo, Turno turno, List<Docente> docentes, List<Asignatura> asignaturas) {
+        this.nombreGrupo = nombreGrupo;
         this.turno = turno;
-        this.horarios = horarios;
+        this.docentes = docentes;
+        this.asignaturas = asignaturas;
     }
 
-    public String getName() {
-        return name;
+    public String getNombreGrupo() {
+        return nombreGrupo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombreGrupo(String nombreGrupo) {
+        this.nombreGrupo = nombreGrupo;
     }
 
     public Turno getTurno() {
@@ -38,15 +42,21 @@ public class Grupo {
         this.turno = turno;
     }
 
-    public List<Horario> getHorarios() {
-        return horarios;
+    public List<Docente> getDocentes() {
+        return docentes;
     }
 
-    public void setHorarios(List<Horario> horarios) {
-        this.horarios = horarios;
+    public void setDocentes(List<Docente> docentes) {
+        this.docentes = docentes;
     }
- 
+
+    public List<Asignatura> getAsignaturas() {
+        return asignaturas;
+    }
+
+    public void setAsignaturas(List<Asignatura> asignaturas) {
+        this.asignaturas = asignaturas;
+    }
     
     
-   
 }

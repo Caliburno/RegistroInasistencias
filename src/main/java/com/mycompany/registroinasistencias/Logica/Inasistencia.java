@@ -1,43 +1,20 @@
 package com.mycompany.registroinasistencias.Logica;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-
-
 
 public class Inasistencia {
- 
+
     private int id;
     private Docente docente;
-    private boolean isParcial;
-    private LocalDate fechaDesde;
-    private LocalDate fechaHasta;
-    private LocalTime horaDesde;
-    private LocalTime horaHasta;
+    private LocalDate desde;
+    private LocalDate hasta;
 
-    public Inasistencia() {
-    }
-
-    public Inasistencia(int id, Docente docente, boolean isParcial, LocalDate fechaDesde, LocalDate fechaHasta, LocalTime horaDesde, LocalTime horaHasta) {
-        this.id = id;
+    public Inasistencia(Docente docente, LocalDate desde, LocalDate hasta) {
         this.docente = docente;
-        this.isParcial = isParcial;
-        this.fechaDesde = fechaDesde;
-        this.fechaHasta = fechaHasta;
-        this.horaDesde = horaDesde;
-        this.horaHasta = horaHasta;
+        this.desde = desde;
+        this.hasta = hasta;
     }
-
     
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public Docente getDocente() {
         return docente;
     }
@@ -46,51 +23,19 @@ public class Inasistencia {
         this.docente = docente;
     }
 
-    public boolean isIsParcial() {
-        return isParcial;
+    public LocalDate getDesde() {
+        return desde;
     }
 
-    public void setIsParcial(boolean isParcial) {
-        this.isParcial = isParcial;
+    public void setDesde(LocalDate desde) {
+        this.desde = desde;
     }
 
-    
-    
-    public LocalDate getFechaDesde() {
-        return fechaDesde;
+    public LocalDate getHasta() {
+        return hasta;
     }
 
-
-   
-
-    public void setFechaDesde(LocalDate fechaDesde) {
-        this.fechaDesde = fechaDesde;
-    }
-
-    public LocalDate getFechaHasta() {
-        return fechaHasta;
-    }
-
-    public void setFechaHasta(LocalDate fechaHasta) {
-        this.fechaHasta = fechaHasta;
-    }
-
-    public LocalTime getHoraDesde() {
-        return horaDesde;
-    }
-
-    public void setHoraDesde(LocalTime horaDesde) {
-        this.horaDesde = horaDesde;
-    }
-
-    public LocalTime getHoraHasta() {
-        return horaHasta;
-    }
-
-    public void setHoraHasta(LocalTime horaHasta) {
-        this.horaHasta = horaHasta;
-    }
-
-   
-
+    public void setHasta(LocalDate hasta) {
+        this.hasta = hasta;
+    }  
 }

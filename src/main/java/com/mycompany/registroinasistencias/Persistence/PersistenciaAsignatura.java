@@ -5,7 +5,6 @@
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
-import com.mycompany.registroinasistencias.Logica.Horario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,26 +29,5 @@ public class PersistenciaAsignatura {
     public PreparedStatement ps;
     public ResultSet rs;
     
-    public void guardarAsignatura(Asignatura asignatura)throws SQLException, Exception{
-        try{
-            int resultado = 0;
-            
-            Connection con =  cone.getConnection();
-            
-            ps = (PreparedStatement) con.prepareStatement(SQL_GUARDAR_ASIGNATURA);
-            //System.out.println(asignatura.getNombreAsignatura());
-            ps.setString(1, asignatura.getNombreAsignatura());
-            
-           /* if (asignatura.getHorarios() != null && !asignatura.getHorarios().isEmpty()) {
-            for (Horario horario : asignatura.getHorarios()) {
-                
-            }
-        }*/
-            
-            
-            resultado = ps.executeUpdate();
-        }catch(SQLException e){
-            throw new Exception("Error al conectarse con la Base de Datos" + e);
-        }
-    }
+    
 }

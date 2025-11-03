@@ -304,7 +304,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private void buttonAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddTeacherActionPerformed
         String nameDocente = textFieldName.getText();
         String ciDocente = textFieldCI.getText();
-        control.crearDocente(nameDocente, ciDocente);
+        
         textFieldCI.setText("");
         textFieldName.setText("");
     }//GEN-LAST:event_buttonAddTeacherActionPerformed
@@ -315,8 +315,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
         String group = textFieldGroup.getText();
         String turno = (String) cmbTurno.getSelectedItem();
         String docente = (String) cmbTeachers.getSelectedItem();
-        control.guardarAsignatura(nameSubject);
-        control.guardarHorario(days, group, turno, docente);
+     
     }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
 
     private void cmbTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTeachersActionPerformed
