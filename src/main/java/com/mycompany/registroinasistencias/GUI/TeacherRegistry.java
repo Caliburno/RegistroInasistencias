@@ -4,9 +4,11 @@
  */
 package com.mycompany.registroinasistencias.GUI;
 
+import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Controladora;
 import com.mycompany.registroinasistencias.Logica.Docente;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -49,9 +51,9 @@ public class TeacherRegistry extends javax.swing.JFrame {
         labelCI = new javax.swing.JLabel();
         labelName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableTeachers = new javax.swing.JTable();
+        doceTabla = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tableSubjects = new javax.swing.JTable();
+        asigTabla = new javax.swing.JTable();
         textFieldWeekDays = new javax.swing.JTextField();
         textFieldSubjectName = new javax.swing.JTextField();
         headerTeacherRegistry = new javax.swing.JLabel();
@@ -92,45 +94,45 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
         labelName.setText("Nombre");
 
-        tableTeachers.setModel(new javax.swing.table.DefaultTableModel(
+        doceTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Nombre", "CI", "Asignaturas"
-            }
-        ));
-        jScrollPane1.setViewportView(tableTeachers);
 
-        tableSubjects.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Asignatura", "Grupo", "Profesor", "Dias"
             }
         ));
-        jScrollPane2.setViewportView(tableSubjects);
+        jScrollPane1.setViewportView(doceTabla);
+
+        asigTabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(asigTabla);
 
         headerTeacherRegistry.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         headerTeacherRegistry.setText("Fichas Docentes");
@@ -147,7 +149,6 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
         labelGroup.setText("Grupo");
 
-        cmbTeachers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbTeachers.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTeachersActionPerformed(evt);
@@ -172,7 +173,6 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
         labelGroup1.setText("Turno");
 
-        cmbTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTurnoActionPerformed(evt);
@@ -317,7 +317,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
         String group = textFieldGroup.getText();
         String turno = (String) cmbTurno.getSelectedItem();
         String docente = (String) cmbTeachers.getSelectedItem();
-        
+        control.guardarGrupo(group, turno);
         control.guardarAsignatura(nameSubject, days, group, turno, docente);
         textFieldSubjectName.setText("");
         textFieldWeekDays.setText("");
@@ -332,6 +332,8 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
     //aca recorrer todos los docentes
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        cargarDoceTabla();
+        cargarAsigTabla();
         List<Docente> listaDocente = control.traerDocentes();
         if(listaDocente != null){
             for(Docente d : listaDocente){
@@ -341,7 +343,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void cmbTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTurnoActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
     }//GEN-LAST:event_cmbTurnoActionPerformed
 
     /**
@@ -350,11 +352,13 @@ public class TeacherRegistry extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable asigTabla;
     private javax.swing.JButton buttonAddTeacher;
     private javax.swing.JButton buttonAgregarAsignatura;
     private javax.swing.JButton buttonReturn;
     private javax.swing.JComboBox<String> cmbTeachers;
     private javax.swing.JComboBox<String> cmbTurno;
+    private javax.swing.JTable doceTabla;
     private javax.swing.JLabel headerAddSubject;
     private javax.swing.JLabel headerAddTeacher;
     private javax.swing.JLabel headerTeacherRegistry;
@@ -367,12 +371,60 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private javax.swing.JLabel labelSubjectName;
     private javax.swing.JLabel labelTeacherDropdown;
     private javax.swing.JLabel labelWeekDays;
-    private javax.swing.JTable tableSubjects;
-    private javax.swing.JTable tableTeachers;
     private javax.swing.JTextField textFieldCI;
     private javax.swing.JTextField textFieldGroup;
     private javax.swing.JTextField textFieldName;
     private javax.swing.JTextField textFieldSubjectName;
     private javax.swing.JTextField textFieldWeekDays;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDoceTabla() {
+        DefaultTableModel tablaModeldoce = new DefaultTableModel(){
+            //Hay que poner el override porque es un metodo privado
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        //se ponen los nombres de la columnas
+        String titulos[] = {"Nombre", "CI", "Asignatura"};
+        tablaModeldoce.setColumnIdentifiers(titulos);
+        
+        //cargar dats de la base de datos
+        List<Docente> listaDocente = control.traerDocentes();
+        
+        //mostrar cada uno de los elementos de la tabla
+        if(listaDocente != null && !listaDocente.isEmpty()){
+            for(Docente d: listaDocente){
+                
+                
+                if(d.getAsignaturas() != null && !d.getAsignaturas().isEmpty()){
+                    //se crea una fila por cada asignatura
+                    for(Asignatura a : d.getAsignaturas()){
+                        Object[] object = {d.getNombreDocente(), d.getCI(), a.getNombreAsignatura()};
+                        tablaModeldoce.addRow(object);
+                    }
+                     
+                }else{
+                    Object[] object = {d.getNombreDocente(), d.getCI(), "vacio"};
+                    tablaModeldoce.addRow(object);
+                }
+                
+            }
+            
+        }
+        doceTabla.setModel(tablaModeldoce);
+    }
+
+    private void cargarAsigTabla() {
+        DefaultTableModel tablaModelAsig = new DefaultTableModel(){
+          @Override
+          public boolean isCellEditable(int row, int column){
+              return false;
+          }
+        };
+        String titulosAsignatura[] = {"Asignatura", "Grupo", "Profesor", "Dias"};
+        tablaModelAsig.setColumnIdentifiers(titulosAsignatura);
+        List<Asignatura> listaAsignatura = control.traerAsignaturas();
+    }
 }

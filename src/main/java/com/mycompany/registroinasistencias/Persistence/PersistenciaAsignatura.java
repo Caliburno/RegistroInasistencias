@@ -5,10 +5,14 @@
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
+import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Turno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,7 +24,7 @@ public class PersistenciaAsignatura {
     }
     
     private static final String SQL_GUARDAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(NAME)VALUES (?)");
-    private static final String SQL_LEER_ASIGNATURAS = "";
+    private static final String SQL_LEER_ASIGNATURAS = ("SELECT * FROM ausentbase.Asignatura");
     private static final String SQL_LEER_ASIGNATURA = "";
     private static final String SQL_ELIMINAR_ASIGNATURA = "";
     private static final String SQL_CREAR_ASIGNATURA = "";
@@ -28,6 +32,45 @@ public class PersistenciaAsignatura {
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
     public ResultSet rs;
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public List<Asignatura> traerAsignaturas() throws Exception, SQLException{
+        List<Asignatura> listaAsignaturas = new ArrayList<>();
+       try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_ASIGNATURAS);){
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+            String nombre = rs.getString("nombre");
+            String turno = rs.getString("turno");
+            
+            
+            Asignatura asignatura = new Asignatura();
+            asignatura.setNombreAsignatura(nombre);
+            asignatura.getGrupo().getNombreGrupo();
+            asignatura.setTurno(Turno.valueOf(turno));
+            
+            
+            listaAsignaturas.add(asignatura);
+        }
+        rs.close();
+        
+        
+    } catch (SQLException e) {
+        System.out.println(e);
+        throw new Exception("No se pudieron obtener los docentes");
+    }
+    
+    return listaAsignaturas;
+    }
     
     
 }

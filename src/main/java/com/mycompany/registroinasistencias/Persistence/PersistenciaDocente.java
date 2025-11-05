@@ -86,8 +86,8 @@ public class PersistenciaDocente {
            
            ResultSet rs = ps.executeQuery();
            while (rs.next()) {
-            String ci = rs.getString("CI");
-            String nombre = rs.getString("NAME");
+            String ci = rs.getString("ci");
+            String nombre = rs.getString("Nombre");
             
             Docente docente = new Docente();
             docente.setCI(ci);

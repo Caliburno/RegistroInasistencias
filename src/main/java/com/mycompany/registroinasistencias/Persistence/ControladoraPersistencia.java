@@ -6,6 +6,7 @@ package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Grupo;
 import com.mycompany.registroinasistencias.Logica.Usuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -75,6 +76,20 @@ public class ControladoraPersistencia {
         return null;
         
     }
+
+    public List<Asignatura> traerAsignaturas() {
+        try {
+            return perAsig.traerAsignaturas();
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void guardarGrupo(Grupo grupo) {
+        perGrupo.guardarGrupo(grupo);
+    }
+
+    
 
     
   

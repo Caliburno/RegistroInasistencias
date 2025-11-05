@@ -4,6 +4,7 @@
  */
 package com.mycompany.registroinasistencias.Persistence;
 
+import com.mycompany.registroinasistencias.Logica.Grupo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -25,4 +26,8 @@ public class PersistenciaGrupo {
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
     public ResultSet rs;
+
+    void guardarGrupo(Grupo grupo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

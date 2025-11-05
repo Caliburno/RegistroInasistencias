@@ -66,6 +66,17 @@ public class Controladora {
         return controlPersis.traerDocentes();
     }
 
+    public List<Asignatura> traerAsignaturas() {
+        return controlPersis.traerAsignaturas();
+    }
+
+    public void guardarGrupo(String group, String turno) {
+        Grupo grupo = new Grupo();
+        grupo.setNombreGrupo(group);
+        grupo.setTurno(Turno.valueOf(turno));
+        controlPersis.guardarGrupo(grupo);
+    }
+
    
     
     
