@@ -317,7 +317,6 @@ public class TeacherRegistry extends javax.swing.JFrame {
         String group = textFieldGroup.getText();
         String turno = (String) cmbTurno.getSelectedItem();
         String docente = (String) cmbTeachers.getSelectedItem();
-        control.guardarGrupo(group, turno);
         control.guardarAsignatura(nameSubject, days, group, turno, docente);
         textFieldSubjectName.setText("");
         textFieldWeekDays.setText("");

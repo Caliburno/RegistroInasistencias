@@ -55,7 +55,7 @@ public class PersistenciaAsignatura {
             
             Asignatura asignatura = new Asignatura();
             asignatura.setNombreAsignatura(nombre);
-            asignatura.getGrupo().getNombreGrupo();
+            asignatura.getGrupo();
             asignatura.setTurno(Turno.valueOf(turno));
             
             

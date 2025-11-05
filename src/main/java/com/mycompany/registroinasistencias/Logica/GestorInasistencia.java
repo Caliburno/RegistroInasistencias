@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class GestorInasistencia {
-    public ArrayList<Grupo> calcularGruposAfectados(Inasistencia inasistencia) {
-        ArrayList<Grupo> gruposAfectados = new ArrayList<>();
+    public ArrayList<String> calcularGruposAfectados(Inasistencia inasistencia) {
+        ArrayList<String> gruposAfectados = new ArrayList<>();
 
         Docente docente = inasistencia.getDocente();
         LocalDate desde = inasistencia.getDesde();
@@ -20,7 +20,7 @@ public class GestorInasistencia {
 
             for (Asignatura asignatura : docente.getAsignaturas()) {
                 if (asignatura.getDia().name().equals(dia.name())) {
-                    Grupo grupo = asignatura.getGrupo();
+                    String grupo = asignatura.getGrupo();
                     if (!gruposAfectados.contains(grupo)) {
                         gruposAfectados.add(grupo);
                     }

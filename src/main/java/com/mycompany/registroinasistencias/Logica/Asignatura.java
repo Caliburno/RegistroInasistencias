@@ -6,7 +6,7 @@ import java.util.List;
 public class Asignatura {
 
     private String nombreAsignatura;
-    private Grupo grupo;
+    private String grupo;
     private DayOfWeek dia;
     private Turno turno;
 
@@ -15,7 +15,7 @@ public class Asignatura {
     public Asignatura() {
     }
 
-    public Asignatura(String nombreAsignatura, Grupo grupo, DayOfWeek dia, Turno turno, Docente docente) {
+    public Asignatura(String nombreAsignatura, String grupo, DayOfWeek dia, Turno turno, Docente docente) {
         this.nombreAsignatura = nombreAsignatura;
         this.grupo = grupo;
         this.dia = dia;
@@ -31,11 +31,11 @@ public class Asignatura {
         this.nombreAsignatura = nombreAsignatura;
     }
 
-    public Grupo getGrupo() {
+    public String getGrupo() {
         return grupo;
     }
 
-    public void setGrupo(Grupo grupo) {
+    public void setGrupo(String grupo) {
         this.grupo = grupo;
     }
 

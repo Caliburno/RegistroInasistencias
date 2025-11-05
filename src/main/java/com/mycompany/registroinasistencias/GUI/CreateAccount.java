@@ -34,9 +34,7 @@ public class CreateAccount extends javax.swing.JFrame {
     public void setVolverToAccountOptions(boolean volverToAccountOptions) {
         this.volverToAccountOptions = volverToAccountOptions;
     }
-    /**
-     * Creates new form CreateAccount
-     */
+    
     public CreateAccount() {
         initComponents();
     }

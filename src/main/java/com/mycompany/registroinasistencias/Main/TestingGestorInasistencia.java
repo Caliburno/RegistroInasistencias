@@ -4,7 +4,6 @@ package com.mycompany.registroinasistencias.Main;
 import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Docente;
 import com.mycompany.registroinasistencias.Logica.GestorInasistencia;
-import com.mycompany.registroinasistencias.Logica.Grupo;
 import com.mycompany.registroinasistencias.Logica.Inasistencia;
 import com.mycompany.registroinasistencias.Logica.Turno;
 import java.time.DayOfWeek;
@@ -21,12 +20,9 @@ public class TestingGestorInasistencia {
         System.out.println("=== TESTING GESTOR DE INASISTENCIAS ===\n");
         
         // 1. Crear grupos
-        Grupo grupo1A = new Grupo();
-        grupo1A.setNombreGrupo("1°A");
-        Grupo grupo2B = new Grupo();
-        grupo2B.setNombreGrupo("2°B");
-        Grupo grupo3C = new Grupo();
-        grupo3C.setNombreGrupo("3°C");
+        String grupo1A = "1°A";
+        String grupo2B = "2°B";
+        String grupo3C = "3°C";
         
         // 2. Crear asignaturas para un docente
         ArrayList<Asignatura> asignaturas = new ArrayList<>();
@@ -61,7 +57,7 @@ public class TestingGestorInasistencia {
         System.out.println("Asignaturas del docente:");
         for(Asignatura asig : docente.getAsignaturas()) {
             System.out.println("- " + asig.getNombreAsignatura() + " en grupo " + 
-                             asig.getGrupo().getNombreGrupo() + " los " + asig.getDia());
+                             asig.getGrupo() + " los " + asig.getDia());
         }
         System.out.println();
         
@@ -79,7 +75,7 @@ public class TestingGestorInasistencia {
         
         // 5. Testear el GestorInasistencia
         GestorInasistencia gestor = new GestorInasistencia();
-        ArrayList<Grupo> gruposAfectados = gestor.calcularGruposAfectados(inasistencia);
+        ArrayList<String> gruposAfectados = gestor.calcularGruposAfectados(inasistencia);
         
         // 6. Mostrar resultados
         System.out.println("=== RESULTADOS ===");
@@ -88,8 +84,8 @@ public class TestingGestorInasistencia {
         if(gruposAfectados.isEmpty()) {
             System.out.println("No hay grupos afectados.");
         } else {
-            for(Grupo grupo : gruposAfectados) {
-                System.out.println("- " + grupo.getNombreGrupo());
+            for(String grupo : gruposAfectados) {
+                System.out.println("- " + grupo);
             }
         }
         
