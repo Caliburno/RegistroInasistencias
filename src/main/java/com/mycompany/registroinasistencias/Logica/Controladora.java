@@ -32,10 +32,9 @@ public class Controladora {
     }
     
 
-    public void guardarUsuario(String name, String ci, String password) {
+    public void guardarUsuario(String ci, String password) {
         Usuario usu = new Usuario();
         
-        usu.setName(name);
         usu.setCi(ci);
         String hashed = BCrypt.hashpw(password, BCrypt.gensalt());
         usu.setPassword(hashed);
@@ -44,25 +43,44 @@ public class Controladora {
         
     }
 
-    public void guardarDocente(String ciDocente, String nameDocente) {
+    public void crearDocente(String ciDocente, String nameDocente) {
         Docente doce = new Docente();
         
         doce.setCI(ciDocente);
-        System.out.println("esta es la controladora: " + doce.getCI());
         doce.setNombreDocente(nameDocente);
-        System.out.println("esta es la controladora: " + doce.getNombreDocente());
-        controlPersis.guardarDocente(doce);
+        controlPersis.crearDocente(doce);
     }
 
-    public void guardarAsignatura(String nameSubject, String days, String group, String turno, String docente) {
+    public void crearAsignatura(String docente, String nameSubject, String group, String days, String turno) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public void crearInasistencia(String docente, String desde, String hasta) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void borrarDocente(Docente doce){
+        
+    };
+    
+    public void borrarAsignatura(Asignatura materia){
+        
+    };
+    
+    public void borrarInasistencia(Inasistencia ina){
+        
+    };
+    
+    
     public List<Docente> traerDocentes() {
         return controlPersis.traerDocentes();
     }
 
     public List<Asignatura> traerAsignaturas() {
         return controlPersis.traerAsignaturas();
+    }
+    
+    public List<Inasistencia> traerInasistencias() {
+        return controlPersis.traerInasistencias();
     }
 }

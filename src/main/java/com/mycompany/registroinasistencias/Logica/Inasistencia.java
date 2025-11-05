@@ -9,6 +9,8 @@ public class Inasistencia {
     private LocalDate desde;
     private LocalDate hasta;
 
+    public Inasistencia() {};
+    
     public Inasistencia(Docente docente, LocalDate desde, LocalDate hasta) {
         this.docente = docente;
         this.desde = desde;

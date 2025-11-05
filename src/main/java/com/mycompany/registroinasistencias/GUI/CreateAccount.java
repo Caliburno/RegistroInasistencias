@@ -48,13 +48,11 @@ public class CreateAccount extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        textFieldName = new javax.swing.JTextField();
         textFieldCI = new javax.swing.JTextField();
         passwordFieldPassword = new javax.swing.JPasswordField();
         passwordFieldRepeat = new javax.swing.JPasswordField();
         buttonCreateAccount = new javax.swing.JButton();
         buttonReturn = new javax.swing.JButton();
-        labelName = new javax.swing.JLabel();
         labelCI = new javax.swing.JLabel();
         labelPassword = new javax.swing.JLabel();
         labelRepeatPassword = new javax.swing.JLabel();
@@ -81,8 +79,6 @@ public class CreateAccount extends javax.swing.JFrame {
             }
         });
 
-        labelName.setText("Nombre");
-
         labelCI.setText("Número de Cédula");
 
         labelPassword.setText("Contraseña");
@@ -98,12 +94,10 @@ public class CreateAccount extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(labelRepeatPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                     .addComponent(labelPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelCI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelCI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textFieldName)
                         .addComponent(textFieldCI)
                         .addComponent(passwordFieldPassword)
                         .addComponent(passwordFieldRepeat, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
@@ -117,11 +111,7 @@ public class CreateAccount extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelName))
-                .addGap(18, 18, 18)
+                .addGap(75, 75, 75)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelCI))
@@ -135,7 +125,7 @@ public class CreateAccount extends javax.swing.JFrame {
                     .addComponent(labelRepeatPassword))
                 .addGap(18, 18, 18)
                 .addComponent(buttonCreateAccount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addComponent(buttonReturn)
                 .addContainerGap())
         );
@@ -154,19 +144,17 @@ public class CreateAccount extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
-        String name = textFieldName.getText();
         String ci = textFieldCI.getText();
 
         String password = passwordFieldPassword.getText();
         String passwordRepeat = passwordFieldRepeat.getText();
         
-        if(!name.equals("") && !ci.equals("") &&
-                !password.equals("")){
+        if(!ci.equals("") && !password.equals("")){
                 if(password.equals(passwordRepeat)){
                     
                     login.setVisible(true);
                     this.setVisible(false);
-                    control.guardarUsuario(name, ci, password);
+                    control.guardarUsuario(ci, password);
                 }else{
                     mostrarMensaje("La contraseña debe ser la misma en ambos campos", "Error", "Error al registrar contraseña");
                 }
@@ -189,13 +177,11 @@ public class CreateAccount extends javax.swing.JFrame {
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonReturn;
     private javax.swing.JLabel labelCI;
-    private javax.swing.JLabel labelName;
     private javax.swing.JLabel labelPassword;
     private javax.swing.JLabel labelRepeatPassword;
     private javax.swing.JPasswordField passwordFieldPassword;
     private javax.swing.JPasswordField passwordFieldRepeat;
     private javax.swing.JTextField textFieldCI;
-    private javax.swing.JTextField textFieldName;
     // End of variables declaration//GEN-END:variables
 
 public void mostrarMensaje(String mensaje, String tipo, String titulo){

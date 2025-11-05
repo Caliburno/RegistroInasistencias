@@ -4,8 +4,14 @@
  */
 package com.mycompany.registroinasistencias.Persistence;
 
+import com.mycompany.registroinasistencias.Logica.Inasistencia;
+import com.mycompany.registroinasistencias.Logica.Docente;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -16,13 +22,83 @@ public class PersistenciaInasistencia {
     public PersistenciaInasistencia() {
     }
     
-    private final static String SQL_GUARDAR_INASISTENCIA = "";
-    private final static String SQL_LEER_INASISTENCIAS = "";
-    private final static String SQL_LEER_INASISTENCIA = "";
-    private final static String SQL_EDITAR_INASISTENCIA = "";
-    private final static String SQL_ELIMINAR_INASISTENCIA = "";
+    private final static String SQL_CREAR_INASISTENCIA = "INSERT INTO ausentbase.Inasistencia (docente, desde, hasta) VALUES (?,?,?)";
+    private final static String SQL_ELIMINAR_INASISTENCIA = "DELETE * FROM ausentbase.Inasistencia WHERE id=?";
+    private final static String SQL_LEER_INASISTENCIAS = "SELECT * from ausentbase.Inasistencia";
     
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
     public ResultSet rs;
+
+public void crearInasistencia(Inasistencia ina) throws Exception, SQLException{
+        try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_CREAR_INASISTENCIA);){
+            
+            int resultado = 0;
+            
+            ps.setString(1, ina.getDocente().toString());
+            ps.setString(2, ina.getDesde().toString());
+            ps.setString(3, ina.getHasta().toString());
+             
+            resultado = ps.executeUpdate();
+             
+             con.close();
+        }catch(SQLException e){
+             throw new Exception(e);
+        }
+    } 
+    
+    public void eliminarDocente(String ci) throws SQLException, Exception{
+
+        try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_INASISTENCIA);) {
+            
+
+           String eliminacion = null;
+            ps.setString(1, ci);
+            int resultado = ps.executeUpdate();
+
+            if (rs.next()) {
+                eliminacion = "Inasistencia Eliminada";
+
+            } else {
+                eliminacion = "La Inasistencia  que desea eliminar no se encuentra";
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+}
+    
+   public List<Inasistencia> traerInasistencias() throws SQLException, Exception{
+       List<Inasistencia> listaInasistencias = new ArrayList<>();
+       try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_INASISTENCIAS);){
+           
+           ResultSet rs = ps.executeQuery();
+           while (rs.next()) {
+            String ci = rs.getString("Docente");
+            String desde = rs.getString("Desde");
+            String hasta = rs.getString("Hasta");
+            Docente docente = new Docente(control.leerDocente(ci));
+            
+            Inasistencia inasistencia = new Inasistencia();
+            Inasistencia.setDocente(docente);
+            Inasistencia.setDesde(desde);
+            Inasistencia.setHasta(hasta);
+            
+            listaDocentes.add(docente);
+        }
+        rs.close();
+        
+        
+    } catch (SQLException e) {
+        System.out.println(e);
+        throw new Exception("No se pudieron obtener los docentes");
+    }
+    
+    return listaDocentes;
+       }
+
 }

@@ -14,12 +14,23 @@ public class Docente {
     public Docente() {
     }
     
+    public String toString(){
+        
+        String nombre = getNombreDocente();
+        return nombre;
+    }
+    
     
 
-    public Docente(String nombreDocente, String CI, ArrayList<Asignatura> asignaturas) {
+    public Docente(String CI, String nombreDocente, ArrayList<Asignatura> asignaturas) {
+        this.CI = CI;
+        this.nombreDocente = nombreDocente;
+        this.asignaturas = asignaturas;
+    }
+    
+    public Docente(String CI, String nombreDocente) {
         this.nombreDocente = nombreDocente;
         this.CI = CI;
-        this.asignaturas = asignaturas;
     }
 
     

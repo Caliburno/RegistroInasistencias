@@ -7,6 +7,7 @@ package com.mycompany.registroinasistencias.GUI;
 import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Controladora;
 import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Turno;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,8 +35,19 @@ public class TeacherRegistry extends javax.swing.JFrame {
      */
     public TeacherRegistry() {
         initComponents();
+        
+        for (Turno t : Turno.values())
+            cbElegirTurno.addItem(t.toString());
+        
+        List<Docente> docentes = control.traerDocentes();
+        for (Docente d : docentes) {
+            cbElegirDocente.addItem(d.getNombreDocente());
+        }
+        
     }
 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,30 +57,33 @@ public class TeacherRegistry extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonAddTeacher = new javax.swing.JButton();
+        headerTeacherRegistry = new javax.swing.JLabel();
+        buttonReturn = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        headerAddTeacher = new javax.swing.JLabel();
+        textFieldNameTeacher = new javax.swing.JTextField();
         textFieldCI = new javax.swing.JTextField();
-        textFieldName = new javax.swing.JTextField();
-        labelCI = new javax.swing.JLabel();
         labelName = new javax.swing.JLabel();
+        labelCI = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         doceTabla = new javax.swing.JTable();
+        buttonAddTeacher = new javax.swing.JButton();
+        buttonDeleteTeacher = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        headerAddSubject = new javax.swing.JLabel();
+        labelTeacherDropdown = new javax.swing.JLabel();
+        cbElegirDocente = new javax.swing.JComboBox<>();
+        labelSubjectName = new javax.swing.JLabel();
+        textFieldGrupo = new javax.swing.JTextField();
+        labelGroup = new javax.swing.JLabel();
+        textFieldMateria = new javax.swing.JTextField();
+        cbElegirDia = new javax.swing.JComboBox<>();
+        cbElegirTurno = new javax.swing.JComboBox<>();
+        buttonAgregarAsignatura = new javax.swing.JButton();
+        labelWeekDays = new javax.swing.JLabel();
+        labelGroup1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         asigTabla = new javax.swing.JTable();
-        textFieldWeekDays = new javax.swing.JTextField();
-        textFieldSubjectName = new javax.swing.JTextField();
-        headerTeacherRegistry = new javax.swing.JLabel();
-        headerAddTeacher = new javax.swing.JLabel();
-        headerAddSubject = new javax.swing.JLabel();
-        labelSubjectName = new javax.swing.JLabel();
-        labelWeekDays = new javax.swing.JLabel();
-        labelGroup = new javax.swing.JLabel();
-        textFieldGroup = new javax.swing.JTextField();
-        cmbTeachers = new javax.swing.JComboBox<>();
-        labelTeacherDropdown = new javax.swing.JLabel();
-        buttonReturn = new javax.swing.JButton();
-        buttonAgregarAsignatura = new javax.swing.JButton();
-        labelGroup1 = new javax.swing.JLabel();
-        cmbTurno = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -77,22 +92,34 @@ public class TeacherRegistry extends javax.swing.JFrame {
             }
         });
 
-        buttonAddTeacher.setText("Agregar");
-        buttonAddTeacher.addActionListener(new java.awt.event.ActionListener() {
+        headerTeacherRegistry.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        headerTeacherRegistry.setText("Fichas Docentes");
+
+        buttonReturn.setText("Volver");
+        buttonReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAddTeacherActionPerformed(evt);
+                buttonReturnActionPerformed(evt);
             }
         });
 
-        textFieldName.addActionListener(new java.awt.event.ActionListener() {
+        headerAddTeacher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        headerAddTeacher.setText("Agregar Docente Nuevo");
+
+        textFieldNameTeacher.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldNameActionPerformed(evt);
+                textFieldNameTeacherActionPerformed(evt);
             }
         });
 
-        labelCI.setText("Cédula");
+        textFieldCI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldCIActionPerformed(evt);
+            }
+        });
 
         labelName.setText("Nombre");
+
+        labelCI.setText("Cédula");
 
         doceTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -115,6 +142,110 @@ public class TeacherRegistry extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(doceTabla);
 
+        buttonAddTeacher.setText("Agregar");
+        buttonAddTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddTeacherActionPerformed(evt);
+            }
+        });
+
+        buttonDeleteTeacher.setText("Borrar");
+        buttonDeleteTeacher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteTeacherActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(headerAddTeacher)
+                        .addGap(123, 123, 123))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonDeleteTeacher)
+                        .addGap(105, 105, 105)
+                        .addComponent(buttonAddTeacher)
+                        .addContainerGap())))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(90, 90, 90)
+                                .addComponent(textFieldNameTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(labelCI, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(headerAddTeacher)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelName)
+                    .addComponent(textFieldNameTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelCI)
+                    .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(155, 155, 155)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAddTeacher)
+                    .addComponent(buttonDeleteTeacher))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+        );
+
+        headerAddSubject.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        headerAddSubject.setText("Agregar Asignatura");
+
+        labelTeacherDropdown.setText("Docente");
+
+        cbElegirDocente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbElegirDocenteActionPerformed(evt);
+            }
+        });
+
+        labelSubjectName.setText("Materia");
+
+        labelGroup.setText("Grupo");
+
+        cbElegirDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbElegirDiaActionPerformed(evt);
+            }
+        });
+
+        cbElegirTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbElegirTurnoActionPerformed(evt);
+            }
+        });
+
+        buttonAgregarAsignatura.setText("Agregar");
+        buttonAgregarAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAgregarAsignaturaActionPerformed(evt);
+            }
+        });
+
+        labelWeekDays.setText("Dia");
+
+        labelGroup1.setText("Turno");
+
         asigTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -134,160 +265,103 @@ public class TeacherRegistry extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(asigTabla);
 
-        headerTeacherRegistry.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        headerTeacherRegistry.setText("Fichas Docentes");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(labelSubjectName)
+                        .addGap(69, 69, 69)
+                        .addComponent(textFieldMateria))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTeacherDropdown)
+                            .addComponent(labelGroup)
+                            .addComponent(labelWeekDays)
+                            .addComponent(labelGroup1))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cbElegirTurno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbElegirDia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbElegirDocente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(headerAddSubject)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(textFieldGrupo, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(buttonAgregarAsignatura)))
+                .addGap(25, 25, 25))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(headerAddSubject)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTeacherDropdown)
+                    .addComponent(cbElegirDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelSubjectName)
+                    .addComponent(textFieldMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelGroup)
+                    .addComponent(textFieldGrupo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbElegirDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelWeekDays))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelGroup1)
+                    .addComponent(cbElegirTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(buttonAgregarAsignatura)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+        );
 
-        headerAddTeacher.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        headerAddTeacher.setText("Agregar Docente Nuevo");
-
-        headerAddSubject.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        headerAddSubject.setText("Agregar Asignatura");
-
-        labelSubjectName.setText("Materia");
-
-        labelWeekDays.setText("Dia");
-
-        labelGroup.setText("Grupo");
-
-        cmbTeachers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTeachersActionPerformed(evt);
-            }
-        });
-
-        labelTeacherDropdown.setText("Docente");
-
-        buttonReturn.setText("Volver");
-        buttonReturn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonReturnActionPerformed(evt);
-            }
-        });
-
-        buttonAgregarAsignatura.setText("Agregar");
-        buttonAgregarAsignatura.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAgregarAsignaturaActionPerformed(evt);
-            }
-        });
-
-        labelGroup1.setText("Turno");
-
-        cmbTurno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbTurnoActionPerformed(evt);
-            }
-        });
+        cbElegirTurno.getAccessibleContext().setAccessibleParent(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(headerAddTeacher)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(labelCI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonAddTeacher))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(labelWeekDays)
-                                            .addComponent(labelGroup))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(textFieldWeekDays)
-                                            .addComponent(textFieldSubjectName)
-                                            .addComponent(textFieldGroup, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
-                                        .addGap(114, 114, 114))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelSubjectName)
-                                        .addComponent(headerAddSubject)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(labelTeacherDropdown)
-                                            .addGap(35, 35, 35)
-                                            .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(labelGroup1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(cmbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(105, 105, 105)))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(buttonAgregarAsignatura))))
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(headerTeacherRegistry)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonReturn)))
-                .addGap(52, 52, 52))
+                        .addGap(164, 164, 164)
+                        .addComponent(buttonReturn)
+                        .addGap(28, 28, 28)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(headerTeacherRegistry, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(headerTeacherRegistry))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(16, 16, 16)
                         .addComponent(buttonReturn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(headerAddTeacher)
-                    .addComponent(headerAddSubject))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelName)
-                    .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldSubjectName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSubjectName))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelCI)
-                    .addComponent(textFieldWeekDays, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelWeekDays))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(buttonAddTeacher))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelGroup)
-                            .addComponent(textFieldGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelGroup1)
-                            .addComponent(cmbTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelTeacherDropdown)
-                            .addComponent(cmbTeachers, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(buttonAgregarAsignatura)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -298,36 +372,19 @@ public class TeacherRegistry extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
 
-    private void textFieldNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNameActionPerformed
+    private void textFieldNameTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNameTeacherActionPerformed
         
         
-    }//GEN-LAST:event_textFieldNameActionPerformed
+    }//GEN-LAST:event_textFieldNameTeacherActionPerformed
 
     private void buttonAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddTeacherActionPerformed
-        String nameDocente = textFieldName.getText();
+        String nameDocente = textFieldNameTeacher.getText();
         String ciDocente = textFieldCI.getText();
-        control.guardarDocente(ciDocente, nameDocente);
+        control.crearDocente(ciDocente, nameDocente);
         textFieldCI.setText("");
-        textFieldName.setText("");
+        textFieldNameTeacher.setText("");
+        cargarDoceTabla();
     }//GEN-LAST:event_buttonAddTeacherActionPerformed
-
-    private void buttonAgregarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarAsignaturaActionPerformed
-        String nameSubject = textFieldSubjectName.getText();
-        String days = textFieldWeekDays.getText();
-        String group = textFieldGroup.getText();
-        String turno = (String) cmbTurno.getSelectedItem();
-        String docente = (String) cmbTeachers.getSelectedItem();
-        control.guardarAsignatura(nameSubject, days, group, turno, docente);
-        textFieldSubjectName.setText("");
-        textFieldWeekDays.setText("");
-        textFieldGroup.setText("");
-        
-     
-    }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
-
-    private void cmbTeachersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTeachersActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbTeachersActionPerformed
 
     //aca recorrer todos los docentes
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -336,14 +393,42 @@ public class TeacherRegistry extends javax.swing.JFrame {
         List<Docente> listaDocente = control.traerDocentes();
         if(listaDocente != null){
             for(Docente d : listaDocente){
-                cmbTeachers.addItem(d.getNombreDocente());
+                cbElegirTurno.addItem(d.getNombreDocente());
             }
         }
     }//GEN-LAST:event_formWindowOpened
 
-    private void cmbTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTurnoActionPerformed
-        // TODO add your handling code here
-    }//GEN-LAST:event_cmbTurnoActionPerformed
+    private void textFieldCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldCIActionPerformed
+
+    private void buttonAgregarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarAsignaturaActionPerformed
+        String docente = (String) cbElegirDocente.getSelectedItem();
+        String nameSubject = textFieldMateria.getText();
+        String group = textFieldGrupo.getText();
+        String days =  (String) cbElegirDia.getSelectedItem();
+        String turno = (String) cbElegirTurno.getSelectedItem();
+        
+        control.crearAsignatura(docente, nameSubject, group, days, turno);
+        textFieldMateria.setText("");
+        textFieldGrupo.setText("");
+    }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
+
+    private void cbElegirTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbElegirTurnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbElegirTurnoActionPerformed
+
+    private void cbElegirDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbElegirDiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbElegirDiaActionPerformed
+
+    private void cbElegirDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbElegirDocenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbElegirDocenteActionPerformed
+
+    private void buttonDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteTeacherActionPerformed
+        
+    }//GEN-LAST:event_buttonDeleteTeacherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,13 +439,17 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private javax.swing.JTable asigTabla;
     private javax.swing.JButton buttonAddTeacher;
     private javax.swing.JButton buttonAgregarAsignatura;
+    private javax.swing.JButton buttonDeleteTeacher;
     private javax.swing.JButton buttonReturn;
-    private javax.swing.JComboBox<String> cmbTeachers;
-    private javax.swing.JComboBox<String> cmbTurno;
+    private javax.swing.JComboBox<String> cbElegirDia;
+    private javax.swing.JComboBox<String> cbElegirDocente;
+    private javax.swing.JComboBox<String> cbElegirTurno;
     private javax.swing.JTable doceTabla;
     private javax.swing.JLabel headerAddSubject;
     private javax.swing.JLabel headerAddTeacher;
     private javax.swing.JLabel headerTeacherRegistry;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel labelCI;
@@ -371,10 +460,9 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private javax.swing.JLabel labelTeacherDropdown;
     private javax.swing.JLabel labelWeekDays;
     private javax.swing.JTextField textFieldCI;
-    private javax.swing.JTextField textFieldGroup;
-    private javax.swing.JTextField textFieldName;
-    private javax.swing.JTextField textFieldSubjectName;
-    private javax.swing.JTextField textFieldWeekDays;
+    private javax.swing.JTextField textFieldGrupo;
+    private javax.swing.JTextField textFieldMateria;
+    private javax.swing.JTextField textFieldNameTeacher;
     // End of variables declaration//GEN-END:variables
 
     private void cargarDoceTabla() {

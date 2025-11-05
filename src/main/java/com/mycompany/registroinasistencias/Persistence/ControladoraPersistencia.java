@@ -1,11 +1,8 @@
-  /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Inasistencia;
 import com.mycompany.registroinasistencias.Logica.Usuario;
 import java.util.List;
 import java.util.logging.Level;
@@ -57,14 +54,19 @@ public class ControladoraPersistencia {
        return result;
    }
 
-    public void guardarDocente(Docente doce) {
+    public void crearDocente(Docente doce) {
         try {
-            perDoce.guardarDocente(doce);
+            perDoce.crearDocente(doce);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    
+    public void borrarDocente(Docente doce){
+        
+    };
+    
     public List<Docente> traerDocentes() {
         try {
             return perDoce.traerDocentes();
@@ -75,6 +77,18 @@ public class ControladoraPersistencia {
         
     }
 
+     public void crearAsignatura(Asignatura materia) {
+        try {
+            perAsig.crearAsignatura(materia);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void borrarAsignatura(Asignatura materia){
+        
+    };
+     
     public List<Asignatura> traerAsignaturas() {
         try {
             return perAsig.traerAsignaturas();
@@ -82,6 +96,29 @@ public class ControladoraPersistencia {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public void crearInasistencia(Inasistencia materia) {
+        try {
+            perIne.crearInasistencia(materia);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+    public void borrarInasistencia(Docente doce){
+        
+    };
+    
+    public List<Inasistencia> traerInasistencias() {
+        try {
+            return perIna.traerInasistencia();
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
     }
 
 

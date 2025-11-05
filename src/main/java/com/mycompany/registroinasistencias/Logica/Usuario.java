@@ -1,26 +1,16 @@
 package com.mycompany.registroinasistencias.Logica;
 
 public class Usuario {
-    private String name;
     private String ci;
     private String password;
 
     public Usuario() {
     }
 
-    public Usuario(String name, String ci, String password) {
-        this.name = name;
+    public Usuario(String ci, String password) {
         this.ci = ci;
   
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getCi() {
@@ -30,8 +20,6 @@ public class Usuario {
     public void setCi(String ci) {
         this.ci = ci;
     }
-
-   
 
     public String getPassword() {
         return password;

@@ -1,7 +1,6 @@
 package com.mycompany.registroinasistencias.Logica;
 
 import java.time.DayOfWeek;
-import java.util.List;
 
 public class Asignatura {
 

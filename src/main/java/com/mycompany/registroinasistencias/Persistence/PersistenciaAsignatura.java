@@ -23,11 +23,9 @@ public class PersistenciaAsignatura {
     public PersistenciaAsignatura() {
     }
     
-    private static final String SQL_GUARDAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(NAME)VALUES (?)");
+    private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(NAME)VALUES (?,?,?,?)");
     private static final String SQL_LEER_ASIGNATURAS = ("SELECT * FROM ausentbase.Asignatura");
-    private static final String SQL_LEER_ASIGNATURA = "";
     private static final String SQL_ELIMINAR_ASIGNATURA = "";
-    private static final String SQL_CREAR_ASIGNATURA = "";
     
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
@@ -35,11 +33,52 @@ public class PersistenciaAsignatura {
 
     
     
+    public void crearAsignatura(Asignatura materia) throws Exception, SQLException{
+        try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_CREAR_ASIGNATURA);){
+            
+            int resultado = 0;
+            
+            
+            ps.setString(1, materia.getNombreAsignatura()); 
+            System.out.println(materia.getNombreAsignatura());
+            ps.setString(2, materia.getGrupo());
+            System.out.println(materia.getGrupo());
+            ps.setString(3, materia.getDia().toString());
+            System.out.println(materia.getDia());
+            ps.setString(4, materia.getTurno().toString());
+            System.out.println(materia.getTurno());
+            
+            resultado = ps.executeUpdate();
+             
+             con.close();
+        }catch(SQLException e){
+             throw new Exception(e);
+        }
+    } 
     
-    
-    
-    
-    
+    public void eliminarAsignatura(String ci) throws SQLException, Exception{
+
+        try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_ASIGNATURA);) {
+            
+
+           String eliminacion = null;
+            ps.setString(1, ci);
+            int resultado = ps.executeUpdate();
+
+            if (rs.next()) {
+                eliminacion = "Asignatura Eliminada";
+
+            } else {
+                eliminacion = "La asignatura  que desea eliminar no se encuentra";
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+}
     
     
     public List<Asignatura> traerAsignaturas() throws Exception, SQLException{

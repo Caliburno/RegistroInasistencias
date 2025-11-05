@@ -21,9 +21,6 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         this.display = display;
     }
     
-    /**
-     * Creates new form RegistroInasistencias
-     */
     public AbsenceRegistry() {
         initComponents();
     }
