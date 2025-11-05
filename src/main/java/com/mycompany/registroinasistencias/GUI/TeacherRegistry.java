@@ -472,43 +472,37 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private javax.swing.JTextField textFieldNameTeacher;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarDoceTabla() {
-        DefaultTableModel tablaModeldoce = new DefaultTableModel(){
-            //Hay que poner el override porque es un metodo privado
-            @Override
-            public boolean isCellEditable(int row, int column){
-                return false;
-            }
-        };
-        //se ponen los nombres de la columnas
-        String titulos[] = {"Nombre", "CI", "Asignatura"};
-        tablaModeldoce.setColumnIdentifiers(titulos);
-        
-        //cargar dats de la base de datos
-        List<Docente> listaDocente = control.traerDocentes();
-        
-        //mostrar cada uno de los elementos de la tabla
-        if(listaDocente != null && !listaDocente.isEmpty()){
-            for(Docente d: listaDocente){
-                
-                
-                if(d.getAsignaturas() != null && !d.getAsignaturas().isEmpty()){
-                    //se crea una fila por cada asignatura
-                    for(Asignatura a : d.getAsignaturas()){
-                        Object[] object = {d.getNombreDocente(), d.getCI(), a.getNombreAsignatura()};
-                        tablaModeldoce.addRow(object);
-                    }
-                     
-                }else{
-                    Object[] object = {d.getNombreDocente(), d.getCI(), "vacio"};
+private void cargarDoceTabla() {
+    DefaultTableModel tablaModeldoce = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column){
+            return false;
+        }
+    };
+    
+    String titulos[] = {"Nombre", "CI", "Asignatura"};
+    tablaModeldoce.setColumnIdentifiers(titulos);
+    
+    List<Docente> listaDocente = control.traerDocentes();
+    
+    if(listaDocente != null && !listaDocente.isEmpty()){
+        for(Docente d: listaDocente){
+            
+            if(d.getAsignaturas() != null && !d.getAsignaturas().isEmpty()){
+                // Una fila por cada asignatura
+                for(Asignatura a : d.getAsignaturas()){
+                    Object[] object = {d.getNombreDocente(), d.getCI(), a.getNombreAsignatura()};
                     tablaModeldoce.addRow(object);
                 }
-                
+            } else {
+                // Si no tiene asignaturas, mostrar una sola fila
+                Object[] object = {d.getNombreDocente(), d.getCI(), "Sin asignaturas"};
+                tablaModeldoce.addRow(object);
             }
-            
         }
-        doceTabla.setModel(tablaModeldoce);
     }
+    doceTabla.setModel(tablaModeldoce);
+}
 
     private void cargarAsigTabla() {
         DefaultTableModel tablaModelAsig = new DefaultTableModel(){

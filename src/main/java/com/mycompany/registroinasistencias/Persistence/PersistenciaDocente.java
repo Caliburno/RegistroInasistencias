@@ -1,10 +1,13 @@
 package com.mycompany.registroinasistencias.Persistence;
 
+import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Docente;
+import com.mycompany.registroinasistencias.Logica.Turno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,34 +98,66 @@ public class PersistenciaDocente {
     return docente;
 }
     
-   public List<Docente> traerDocentes() throws SQLException, Exception{
-       List<Docente> listaDocentes = new ArrayList<>();
-       try(Connection con = cone.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_DOCENTES);){
-           
-           ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-            String ci = rs.getString("ci");
-            String nombre = rs.getString("Nombre");
-            
-            Docente docente = new Docente();
-            docente.setCI(ci);
-            docente.setNombreDocente(nombre);
-            
-            listaDocentes.add(docente);
-        }
-        rs.close();
-        
-        
-    } catch (SQLException e) {
-        System.out.println(e);
-        throw new Exception("No se pudieron obtener los docentes");
-    }
+    public List<Docente> traerDocentes() throws Exception, SQLException {
+        List<Docente> listaDocentes = new ArrayList<>();
+        String SQL_LEER_DOCENTES = "SELECT * FROM ausentbase.Docente";
     
-    return listaDocentes;
-       }
-     
-       
+        try (Connection con = cone.getConnection();
+        PreparedStatement ps = con.prepareStatement(SQL_LEER_DOCENTES)) {
+        
+            ResultSet rs = ps.executeQuery();
+        
+            while (rs.next()) {
+                String ci = rs.getString("ci");
+                String nombre = rs.getString("nombre");
+            
+                Docente docente = new Docente(ci, nombre);
+            
+                // Cargar las asignaturas de este docente
+                ArrayList<Asignatura> asignaturas = traerAsignaturasDelDocente(ci);
+                docente.setAsignaturas(asignaturas);
+            
+                listaDocentes.add(docente);
+            }
+            rs.close();
+        
+        } catch (SQLException e) {
+            System.out.println(e);
+            throw new Exception("No se pudieron obtener los docentes");
+        }
+    
+        return listaDocentes;
+    }
+
+    // Método auxiliar para traer las asignaturas de un docente específico
+    private ArrayList<Asignatura> traerAsignaturasDelDocente(String ciDocente) throws SQLException, Exception {
+        ArrayList<Asignatura> asignaturas = new ArrayList<>();
+        String SQL = "SELECT * FROM ausentbase.Asignatura WHERE docente = ?";
+    
+        try (Connection con = cone.getConnection();
+             PreparedStatement ps = con.prepareStatement(SQL)) {
+        
+            ps.setString(1, ciDocente);
+            ResultSet rs = ps.executeQuery();
+        
+            while (rs.next()) {
+                Asignatura asignatura = new Asignatura();
+                asignatura.setNombreAsignatura(rs.getString("nombre"));
+                asignatura.setGrupo(rs.getString("grupo"));
+                asignatura.setDia(DayOfWeek.valueOf(rs.getString("dia")));
+                asignatura.setTurno(Turno.valueOf(rs.getString("turno")));
+                // No setear el docente aquí para evitar referencia circular
+            
+                asignaturas.add(asignatura);
+            }
+            rs.close();
+        
+        } catch (SQLException e) {
+            System.out.println("Error al cargar asignaturas del docente " + ciDocente + ": " + e);
+        }
+    
+        return asignaturas;
+    }
       
    } 
     

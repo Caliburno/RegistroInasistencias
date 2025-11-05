@@ -8,7 +8,6 @@ public class Docente {
     private String CI;
     private String nombreDocente;
     private ArrayList<Asignatura> asignaturas;
-    private List<String> grupos;
 
     public Docente() {
     }    
