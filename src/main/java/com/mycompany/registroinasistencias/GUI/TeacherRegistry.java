@@ -17,6 +17,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     Controladora control = new Controladora();
     private MainMenu mainMenu;
     private Display display;
+    private List<Docente> listaDocentes;
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -372,11 +373,11 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarDoceTabla();
         cargarAsigTabla();
-        List<Docente> listaDocente = control.traerDocentes();
-        if(listaDocente != null){
-            for(Docente d : listaDocente){
-                cbElegirDocente.addItem(d.getNombreDocente());
-            }
+        listaDocentes = control.traerDocentes();
+        if(listaDocentes != null){
+            for(Docente d : listaDocentes)
+                cbElegirDocente.addItem(d.getNombreDocente()); //acá me da el error
+            
         }
         for (Turno t : Turno.values())
             cbElegirTurno.addItem(t.toString());
@@ -390,15 +391,29 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCIActionPerformed
 
     private void buttonAgregarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarAsignaturaActionPerformed
-        String docente = (String) cbElegirDocente.getSelectedItem();
+        System.out.println("boton agregar");
+        int index = cbElegirDocente.getSelectedIndex(); // Obtener el índice
+        
+        if (index == -1 || listaDocentes == null) {
+            System.out.println("null");
+            return;
+        }
+        Docente docente = listaDocentes.get(index);
+        System.out.println("creando en registro");
         String nameSubject = textFieldMateria.getText();
+        System.out.println("nombre");
         String group = textFieldGrupo.getText();
+        System.out.println("grupo");
         String days = (String) cbElegirDia.getSelectedItem();
+        System.out.println("dia");
         String turno = (String) cbElegirTurno.getSelectedItem();
+        System.out.println("turno");
         
         control.crearAsignatura(docente, nameSubject, group, days, turno);
+        System.out.println("crear");
         textFieldMateria.setText("");
         textFieldGrupo.setText("");
+        cargarAsigTabla();
     }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
 
     private void cbElegirTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbElegirTurnoActionPerformed
@@ -509,9 +524,16 @@ public class TeacherRegistry extends javax.swing.JFrame {
         
         if(listaAsignatura != null && !listaAsignatura.isEmpty()){
             for(Asignatura a: listaAsignatura){            
-                Object[] object = {a.getNombreAsignatura(), a.getDocente(), a.getGrupo(), a.getDia(), a.getTurno()};
-                        tablaModelAsig.addRow(object);
+                Object[] object = {
+                    a.getNombreAsignatura(), 
+                    a.getDocente().getNombreDocente(), 
+                    a.getGrupo(), 
+                    a.getDia(), 
+                    a.getTurno()
+                };
+                tablaModelAsig.addRow(object);
             }         
         }      
+        asigTabla.setModel(tablaModelAsig);
     }
 }

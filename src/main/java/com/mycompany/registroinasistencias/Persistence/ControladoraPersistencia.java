@@ -82,8 +82,9 @@ public class ControladoraPersistencia {
         
     }
 
-     public void crearAsignatura(Asignatura materia) {
+    public void crearAsignatura(Asignatura materia) {
         try {
+            System.out.println("Creando materia");
             perAsig.crearAsignatura(materia);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);

@@ -11,15 +11,7 @@ public class Docente {
     private List<String> grupos;
 
     public Docente() {
-    }
-    
-    public String toString(){
-        
-        String ci = getCI();
-        return ci;
-    }
-    
-    
+    }    
 
     public Docente(String CI, String nombreDocente, ArrayList<Asignatura> asignaturas) {
         this.CI = CI;
@@ -32,7 +24,10 @@ public class Docente {
         this.CI = CI;
     }
 
-    
+    @Override
+    public String toString() {
+        return nombreDocente;
+    }
     
     public String getNombreDocente() {
         return nombreDocente;

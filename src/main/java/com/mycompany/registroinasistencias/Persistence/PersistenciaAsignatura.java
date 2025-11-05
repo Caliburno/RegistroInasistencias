@@ -1,7 +1,6 @@
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
-import com.mycompany.registroinasistencias.Logica.Docente;
 import com.mycompany.registroinasistencias.Logica.Turno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,14 +19,14 @@ public class PersistenciaAsignatura {
     public PersistenciaAsignatura() {
     }
     
-    private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(docente, materia, grupo, dia, turno)VALUES (?,?,?,?,?)");
+    private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(docente, nombre, grupo, dia, turno)VALUES (?,?,?,?,?)");
     private static final String SQL_LEER_ASIGNATURAS = ("SELECT * FROM ausentbase.Asignatura");
     private static final String SQL_ELIMINAR_ASIGNATURA = "";
     
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
     public ResultSet rs;
-
+    public PersistenciaDocente pd = new PersistenciaDocente();
     
     
     public void crearAsignatura(Asignatura materia) throws Exception, SQLException{
@@ -36,12 +35,16 @@ public class PersistenciaAsignatura {
             
             int resultado = 0;
             
-            ps.setString(1, materia.getDocente().toString());
+            ps.setString(1, materia.getDocente().getCI());
+            System.out.println(materia.getDocente().getCI());
             ps.setString(2, materia.getNombreAsignatura());
+            System.out.println(materia.getNombreAsignatura());
             ps.setString(3, materia.getGrupo());
+            System.out.println(materia.getGrupo());
             ps.setString(4, materia.getDia().toString());
+            System.out.println(materia.getDia().toString());
             ps.setString(5, materia.getTurno().toString());
-            
+            System.out.println(materia.getTurno().toString());
             resultado = ps.executeUpdate();
              
              con.close();
@@ -89,6 +92,7 @@ public class PersistenciaAsignatura {
             
             
             Asignatura asignatura = new Asignatura();
+            asignatura.setDocente(pd.leerDocente(docente));
             asignatura.setNombreAsignatura(nombre);
             asignatura.setGrupo(grupo);
             asignatura.setDia(DayOfWeek.valueOf(dia));
