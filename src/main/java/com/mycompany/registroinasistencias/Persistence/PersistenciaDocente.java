@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Docente;
@@ -24,7 +20,7 @@ public class PersistenciaDocente {
     private final static String SQL_CREAR_DOCENTE = ("INSERT INTO ausentbase.Docente(ci, nombre)VALUES (?,?)");
     private final static String SQL_LEER_DOCENTES = ("SELECT * FROM ausentbase.Docente");
     private final static String SQL_LEER_DOCENTE = ("SELECT * FROM ausentbase.Docente WHERE ci=?");
-    private final static String SQL_ELIMINAR_DOCENTE = ("Delete * FROM ausentbase.Docente WHERE ci=?");
+    private final static String SQL_ELIMINAR_DOCENTE = ("Delete FROM ausentbase.Docente WHERE ci=?");
     
     public Conexion cone = new Conexion();
     public PreparedStatement ps;

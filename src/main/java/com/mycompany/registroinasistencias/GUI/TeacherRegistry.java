@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.registroinasistencias.GUI;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
 import com.mycompany.registroinasistencias.Logica.Controladora;
 import com.mycompany.registroinasistencias.Logica.Docente;
 import com.mycompany.registroinasistencias.Logica.Turno;
+import java.time.DayOfWeek;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,21 +26,8 @@ public class TeacherRegistry extends javax.swing.JFrame {
         this.display = display;
     }
     
-    
-    /**
-     * Creates new form MainFrame
-     */
     public TeacherRegistry() {
-        initComponents();
-        
-        for (Turno t : Turno.values())
-            cbElegirTurno.addItem(t.toString());
-        
-        List<Docente> docentes = control.traerDocentes();
-        for (Docente d : docentes) {
-            cbElegirDocente.addItem(d.getNombreDocente());
-        }
-        
+        initComponents();        
     }
 
     
@@ -84,6 +68,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
         labelGroup1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         asigTabla = new javax.swing.JTable();
+        buttonDeleteMateria = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -123,18 +108,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
         doceTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
@@ -160,17 +134,6 @@ public class TeacherRegistry extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(headerAddTeacher)
-                        .addGap(123, 123, 123))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(buttonDeleteTeacher)
-                        .addGap(105, 105, 105)
-                        .addComponent(buttonAddTeacher)
-                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -184,8 +147,19 @@ public class TeacherRegistry extends javax.swing.JFrame {
                                 .addComponent(labelCI, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(headerAddTeacher)
+                        .addGap(123, 123, 123))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buttonDeleteTeacher)
+                        .addGap(112, 112, 112)
+                        .addComponent(buttonAddTeacher)
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,12 +174,13 @@ public class TeacherRegistry extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCI)
                     .addComponent(textFieldCI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(155, 155, 155)
+                .addGap(151, 151, 151)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonAddTeacher)
                     .addComponent(buttonDeleteTeacher))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         headerAddSubject.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -265,6 +240,13 @@ public class TeacherRegistry extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(asigTabla);
 
+        buttonDeleteMateria.setText("Borrar");
+        buttonDeleteMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteMateriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -276,7 +258,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
                         .addComponent(labelSubjectName)
                         .addGap(69, 69, 69)
                         .addComponent(textFieldMateria))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTeacherDropdown)
                             .addComponent(labelGroup)
@@ -284,16 +266,17 @@ public class TeacherRegistry extends javax.swing.JFrame {
                             .addComponent(labelGroup1))
                         .addGap(65, 65, 65)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(buttonDeleteMateria)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(buttonAgregarAsignatura))
                             .addComponent(cbElegirTurno, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbElegirDia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbElegirDocente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(headerAddSubject)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(textFieldGrupo, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonAgregarAsignatura)))
+                            .addComponent(textFieldGrupo, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGap(25, 25, 25))
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -323,12 +306,12 @@ public class TeacherRegistry extends javax.swing.JFrame {
                     .addComponent(labelGroup1)
                     .addComponent(cbElegirTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(buttonAgregarAsignatura)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buttonAgregarAsignatura)
+                    .addComponent(buttonDeleteMateria))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
-
-        cbElegirTurno.getAccessibleContext().setAccessibleParent(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -338,11 +321,11 @@ public class TeacherRegistry extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(455, Short.MAX_VALUE)
                         .addComponent(headerTeacherRegistry)
                         .addGap(164, 164, 164)
                         .addComponent(buttonReturn)
@@ -373,8 +356,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void textFieldNameTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldNameTeacherActionPerformed
-        
-        
+
     }//GEN-LAST:event_textFieldNameTeacherActionPerformed
 
     private void buttonAddTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddTeacherActionPerformed
@@ -393,9 +375,14 @@ public class TeacherRegistry extends javax.swing.JFrame {
         List<Docente> listaDocente = control.traerDocentes();
         if(listaDocente != null){
             for(Docente d : listaDocente){
-                cbElegirTurno.addItem(d.getNombreDocente());
+                cbElegirDocente.addItem(d.getNombreDocente());
             }
         }
+        for (Turno t : Turno.values())
+            cbElegirTurno.addItem(t.toString());
+        
+        for (DayOfWeek d : DayOfWeek.values())
+            cbElegirDia.addItem(d.toString());
     }//GEN-LAST:event_formWindowOpened
 
     private void textFieldCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCIActionPerformed
@@ -406,7 +393,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
         String docente = (String) cbElegirDocente.getSelectedItem();
         String nameSubject = textFieldMateria.getText();
         String group = textFieldGrupo.getText();
-        String days =  (String) cbElegirDia.getSelectedItem();
+        String days = (String) cbElegirDia.getSelectedItem();
         String turno = (String) cbElegirTurno.getSelectedItem();
         
         control.crearAsignatura(docente, nameSubject, group, days, turno);
@@ -430,6 +417,10 @@ public class TeacherRegistry extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonDeleteTeacherActionPerformed
 
+    private void buttonDeleteMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonDeleteMateriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +430,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
     private javax.swing.JTable asigTabla;
     private javax.swing.JButton buttonAddTeacher;
     private javax.swing.JButton buttonAgregarAsignatura;
+    private javax.swing.JButton buttonDeleteMateria;
     private javax.swing.JButton buttonDeleteTeacher;
     private javax.swing.JButton buttonReturn;
     private javax.swing.JComboBox<String> cbElegirDia;
@@ -505,13 +497,21 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
     private void cargarAsigTabla() {
         DefaultTableModel tablaModelAsig = new DefaultTableModel(){
-          @Override
-          public boolean isCellEditable(int row, int column){
-              return false;
-          }
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
         };
-        String titulosAsignatura[] = {"Asignatura", "Grupo", "Profesor", "Dias"};
-        tablaModelAsig.setColumnIdentifiers(titulosAsignatura);
+        String titulos[] = {"Asignatura", "Docente", "Grupo", "Día de la semana", "Turno"};
+        tablaModelAsig.setColumnIdentifiers(titulos);
+        
         List<Asignatura> listaAsignatura = control.traerAsignaturas();
+        
+        if(listaAsignatura != null && !listaAsignatura.isEmpty()){
+            for(Asignatura a: listaAsignatura){            
+                Object[] object = {a.getNombreAsignatura(), a.getDocente(), a.getGrupo(), a.getDia(), a.getTurno()};
+                        tablaModelAsig.addRow(object);
+            }         
+        }      
     }
 }

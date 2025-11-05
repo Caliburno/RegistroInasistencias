@@ -52,11 +52,18 @@ public class Controladora {
     }
 
     public void crearAsignatura(String docente, String nameSubject, String group, String days, String turno) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Asignatura asi = new Asignatura();
+        asi.setDocente(controlPersis.leerDocente(docente));
+        asi.setNombreAsignatura(nameSubject);
+        asi.setGrupo(group);
+        asi.setDia(DayOfWeek.valueOf(days));
+        asi.setTurno(Turno.valueOf(turno));
+        
+        controlPersis.crearAsignatura(asi);
     }
 
     public void crearInasistencia(String docente, String desde, String hasta) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
     public void borrarDocente(Docente doce){

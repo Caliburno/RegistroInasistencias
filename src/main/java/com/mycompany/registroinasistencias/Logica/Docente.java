@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Docente {
-    //esta clase es una herencia de la clase docente.
-
+    
     private String CI;
     private String nombreDocente;
     private ArrayList<Asignatura> asignaturas;
@@ -16,8 +15,8 @@ public class Docente {
     
     public String toString(){
         
-        String nombre = getNombreDocente();
-        return nombre;
+        String ci = getCI();
+        return ci;
     }
     
     

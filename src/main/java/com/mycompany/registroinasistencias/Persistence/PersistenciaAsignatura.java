@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
@@ -11,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class PersistenciaAsignatura {
     public PersistenciaAsignatura() {
     }
     
-    private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(NAME)VALUES (?,?,?,?)");
+    private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(docente, materia, grupo, dia, turno)VALUES (?,?,?,?,?)");
     private static final String SQL_LEER_ASIGNATURAS = ("SELECT * FROM ausentbase.Asignatura");
     private static final String SQL_ELIMINAR_ASIGNATURA = "";
     
@@ -39,15 +36,11 @@ public class PersistenciaAsignatura {
             
             int resultado = 0;
             
-            
-            ps.setString(1, materia.getNombreAsignatura()); 
-            System.out.println(materia.getNombreAsignatura());
-            ps.setString(2, materia.getGrupo());
-            System.out.println(materia.getGrupo());
-            ps.setString(3, materia.getDia().toString());
-            System.out.println(materia.getDia());
-            ps.setString(4, materia.getTurno().toString());
-            System.out.println(materia.getTurno());
+            ps.setString(1, materia.getDocente().toString());
+            ps.setString(2, materia.getNombreAsignatura());
+            ps.setString(3, materia.getGrupo());
+            ps.setString(4, materia.getDia().toString());
+            ps.setString(5, materia.getTurno().toString());
             
             resultado = ps.executeUpdate();
              
@@ -88,13 +81,17 @@ public class PersistenciaAsignatura {
            
            ResultSet rs = ps.executeQuery();
            while (rs.next()) {
+            String docente = rs.getString("docente");
             String nombre = rs.getString("nombre");
+            String grupo = rs.getString("grupo");
+            String dia = rs.getString("dia");
             String turno = rs.getString("turno");
             
             
             Asignatura asignatura = new Asignatura();
             asignatura.setNombreAsignatura(nombre);
-            asignatura.getGrupo();
+            asignatura.setGrupo(grupo);
+            asignatura.setDia(DayOfWeek.valueOf(dia));
             asignatura.setTurno(Turno.valueOf(turno));
             
             
@@ -105,7 +102,7 @@ public class PersistenciaAsignatura {
         
     } catch (SQLException e) {
         System.out.println(e);
-        throw new Exception("No se pudieron obtener los docentes");
+        throw new Exception("No se pudieron obtener las asignaturas");
     }
     
     return listaAsignaturas;

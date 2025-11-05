@@ -67,6 +67,11 @@ public class ControladoraPersistencia {
         
     };
     
+    public Docente leerDocente(String ci){
+        Docente docente = perDoce.leerDocente(ci);
+        return docente;
+    }
+    
     public List<Docente> traerDocentes() {
         try {
             return perDoce.traerDocentes();
@@ -100,7 +105,7 @@ public class ControladoraPersistencia {
     
     public void crearInasistencia(Inasistencia materia) {
         try {
-            perIne.crearInasistencia(materia);
+            perIna.crearInasistencia(materia);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,7 +118,7 @@ public class ControladoraPersistencia {
     
     public List<Inasistencia> traerInasistencias() {
         try {
-            return perIna.traerInasistencia();
+            return perIna.traerInasistencias();
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }

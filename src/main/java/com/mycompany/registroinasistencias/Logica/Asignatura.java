@@ -4,22 +4,21 @@ import java.time.DayOfWeek;
 
 public class Asignatura {
 
+    private Docente docente;
     private String nombreAsignatura;
     private String grupo;
     private DayOfWeek dia;
     private Turno turno;
 
-    private Docente docente;
-
     public Asignatura() {
     }
 
-    public Asignatura(String nombreAsignatura, String grupo, DayOfWeek dia, Turno turno, Docente docente) {
+    public Asignatura(Docente docente, String nombreAsignatura, String grupo, DayOfWeek dia, Turno turno) {
+        this.docente = docente;
         this.nombreAsignatura = nombreAsignatura;
         this.grupo = grupo;
         this.dia = dia;
         this.turno = turno;
-        this.docente = docente;
     }
 
     public String getNombreAsignatura() {

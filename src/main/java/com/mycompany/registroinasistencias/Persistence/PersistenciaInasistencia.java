@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Inasistencia;
@@ -10,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +45,7 @@ public void crearInasistencia(Inasistencia ina) throws Exception, SQLException{
         }
     } 
     
-    public void eliminarDocente(String ci) throws SQLException, Exception{
+    public void eliminarInasistencia(String ci) throws SQLException, Exception{
 
         try(Connection con = cone.getConnection();
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_INASISTENCIA);) {
@@ -72,33 +69,35 @@ public void crearInasistencia(Inasistencia ina) throws Exception, SQLException{
 }
     
    public List<Inasistencia> traerInasistencias() throws SQLException, Exception{
-       List<Inasistencia> listaInasistencias = new ArrayList<>();
-       try(Connection con = cone.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_INASISTENCIAS);){
-           
-           ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-            String ci = rs.getString("Docente");
-            String desde = rs.getString("Desde");
-            String hasta = rs.getString("Hasta");
-            Docente docente = new Docente(control.leerDocente(ci));
-            
-            Inasistencia inasistencia = new Inasistencia();
-            Inasistencia.setDocente(docente);
-            Inasistencia.setDesde(desde);
-            Inasistencia.setHasta(hasta);
-            
-            listaDocentes.add(docente);
-        }
-        rs.close();
-        
-        
-    } catch (SQLException e) {
-        System.out.println(e);
-        throw new Exception("No se pudieron obtener los docentes");
-    }
+        List<Inasistencia> listaInasistencias = new ArrayList<>();
+        PersistenciaDocente perDoce = new PersistenciaDocente(); 
     
-    return listaDocentes;
-       }
+        try(Connection con = cone.getConnection();
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_INASISTENCIAS);){
+       
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String ci = rs.getString("Docente");
+                String desde = rs.getString("Desde");
+                String hasta = rs.getString("Hasta");
+            
+                Docente docente = perDoce.leerDocente(ci); 
+            
+                Inasistencia inasistencia = new Inasistencia();
+                inasistencia.setDocente(docente); 
+                inasistencia.setDesde(LocalDate.parse(desde)); 
+                inasistencia.setHasta(LocalDate.parse(hasta)); 
+            
+                listaInasistencias.add(inasistencia); 
+            }
+            rs.close();
+        
+        } catch (SQLException e) {
+            System.out.println(e);
+            throw new Exception("No se pudieron obtener las inasistencias");
+        }
+    
+        return listaInasistencias; 
+    }
 
 }
