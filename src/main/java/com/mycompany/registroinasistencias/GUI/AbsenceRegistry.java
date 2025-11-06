@@ -38,18 +38,17 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         
         listaInasistencias = control.traerInasistencias();
         
+        System.out.println("Cantidad de inasistencias: " + 
+    (listaInasistencias != null ? listaInasistencias.size() : "null"));
+        
         if(listaInasistencias != null && !listaInasistencias.isEmpty()){
             for(Inasistencia i: listaInasistencias){
-                // Calcular grupos afectados
                 List<String> listaGruposAfectados = gi.calcularGruposAfectados(i);
                 
-                // Obtener las asignaturas del docente
                 List<Asignatura> asignaturas = i.getDocente().getAsignaturas();
                 
-                // Si hay grupos afectados, mostrar una fila por cada grupo
                 if(listaGruposAfectados != null && !listaGruposAfectados.isEmpty()) {
                     for(String grupo : listaGruposAfectados) {
-                        // Buscar la asignatura correspondiente a este grupo
                         String asignaturaNombre = "";
                         for(Asignatura asig : asignaturas) {
                             if(asig.getGrupo().equals(grupo)) {
@@ -68,7 +67,6 @@ public class AbsenceRegistry extends javax.swing.JFrame {
                         tablaModelInas.addRow(object);
                     }
                 } else {
-                    // Si no hay grupos afectados, mostrar una fila con la inasistencia
                     Object[] object = {
                         i.getDocente().getNombreDocente(),
                         "",
@@ -94,8 +92,8 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     
     public AbsenceRegistry() {
         initComponents();
-        cargarComboDocentes();  // Cargar docentes al inicializar
-        cargarTablaInasistencias();  // Cargar inasistencias existentes
+        cargarComboDocentes();  
+        cargarTablaInasistencias();  
     }
 
     /**
@@ -284,7 +282,7 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldHastaActionPerformed
 
     private void buttonAddAbsenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddAbsenceActionPerformed
-int index = cbDocenteInasistencias.getSelectedIndex();
+        int index = cbDocenteInasistencias.getSelectedIndex();
         
         if (index == -1 || listaDocentes == null || listaDocentes.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, 
