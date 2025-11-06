@@ -1,13 +1,88 @@
 package com.mycompany.registroinasistencias.GUI;
+import com.mycompany.registroinasistencias.Logica.Asignatura;
+import com.mycompany.registroinasistencias.Logica.Controladora;
+import com.mycompany.registroinasistencias.Logica.Docente;
+import java.util.List;
+import com.mycompany.registroinasistencias.Logica.GestorInasistencia;
+import com.mycompany.registroinasistencias.Logica.Inasistencia;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Dario
- */
 public class AbsenceRegistry extends javax.swing.JFrame {
-
+    Controladora control = new Controladora();
+    GestorInasistencia gi = new GestorInasistencia();
     private MainMenu mainMenu;
     private Display display;
+    private List<Docente> listaDocentes;
+    private List<Inasistencia> listaInasistencias;
+    
+    private void cargarComboDocentes() {
+        cbDocenteInasistencias.removeAllItems();
+        listaDocentes = control.traerDocentes();
+        
+        if(listaDocentes != null && !listaDocentes.isEmpty()) {
+            for(Docente doc : listaDocentes) {
+                cbDocenteInasistencias.addItem(doc.getNombreDocente());
+            }
+        }
+    }
+    
+    private void cargarTablaInasistencias() {
+        DefaultTableModel tablaModelInas = new DefaultTableModel(){
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        String titulos[] = {"Docente", "Asignatura", "Grupo afectado", "Día comienzo", "Día fin"};
+        tablaModelInas.setColumnIdentifiers(titulos);
+        
+        listaInasistencias = control.traerInasistencias();
+        
+        if(listaInasistencias != null && !listaInasistencias.isEmpty()){
+            for(Inasistencia i: listaInasistencias){
+                // Calcular grupos afectados
+                List<String> listaGruposAfectados = gi.calcularGruposAfectados(i);
+                
+                // Obtener las asignaturas del docente
+                List<Asignatura> asignaturas = i.getDocente().getAsignaturas();
+                
+                // Si hay grupos afectados, mostrar una fila por cada grupo
+                if(listaGruposAfectados != null && !listaGruposAfectados.isEmpty()) {
+                    for(String grupo : listaGruposAfectados) {
+                        // Buscar la asignatura correspondiente a este grupo
+                        String asignaturaNombre = "";
+                        for(Asignatura asig : asignaturas) {
+                            if(asig.getGrupo().equals(grupo)) {
+                                asignaturaNombre = asig.getNombreAsignatura();
+                                break;
+                            }
+                        }
+                        
+                        Object[] object = {
+                            i.getDocente().getNombreDocente(),
+                            asignaturaNombre,
+                            grupo,
+                            i.getDesde(), 
+                            i.getHasta()
+                        };
+                        tablaModelInas.addRow(object);
+                    }
+                } else {
+                    // Si no hay grupos afectados, mostrar una fila con la inasistencia
+                    Object[] object = {
+                        i.getDocente().getNombreDocente(),
+                        "",
+                        "Ninguno",
+                        i.getDesde(), 
+                        i.getHasta()
+                    };
+                    tablaModelInas.addRow(object);
+                }
+            }         
+        }
+        
+        tablaInasistencias.setModel(tablaModelInas);
+    }
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
@@ -19,6 +94,8 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     
     public AbsenceRegistry() {
         initComponents();
+        cargarComboDocentes();  // Cargar docentes al inicializar
+        cargarTablaInasistencias();  // Cargar inasistencias existentes
     }
 
     /**
@@ -31,23 +108,35 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     private void initComponents() {
 
         headerAbsenceRegistry = new javax.swing.JLabel();
-        textFieldFrom = new javax.swing.JTextField();
-        textFieldTo = new javax.swing.JTextField();
+        textFieldDesde = new javax.swing.JTextField();
+        textFieldHasta = new javax.swing.JTextField();
         labelTeacher = new javax.swing.JLabel();
         labelFrom = new javax.swing.JLabel();
         labelTo = new javax.swing.JLabel();
-        buttonAddTeacher = new javax.swing.JButton();
+        buttonAddAbsence = new javax.swing.JButton();
         buttonReturn = new javax.swing.JButton();
         buttonShowDisplay = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableAbsenceRegistryMain = new javax.swing.JTable();
+        tablaInasistencias = new javax.swing.JTable();
         buttonCloseDisplay = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbDocenteInasistencias = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         headerAbsenceRegistry.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         headerAbsenceRegistry.setText("Registro de Inasistencias");
+
+        textFieldDesde.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldDesdeActionPerformed(evt);
+            }
+        });
+
+        textFieldHasta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldHastaActionPerformed(evt);
+            }
+        });
 
         labelTeacher.setText("Docente");
 
@@ -55,7 +144,12 @@ public class AbsenceRegistry extends javax.swing.JFrame {
 
         labelTo.setText("Hasta");
 
-        buttonAddTeacher.setText("Agregar");
+        buttonAddAbsence.setText("Agregar");
+        buttonAddAbsence.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAddAbsenceActionPerformed(evt);
+            }
+        });
 
         buttonReturn.setText("Volver");
         buttonReturn.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +165,7 @@ public class AbsenceRegistry extends javax.swing.JFrame {
             }
         });
 
-        tableAbsenceRegistryMain.setModel(new javax.swing.table.DefaultTableModel(
+        tablaInasistencias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -82,7 +176,7 @@ public class AbsenceRegistry extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tableAbsenceRegistryMain);
+        jScrollPane1.setViewportView(tablaInasistencias);
 
         buttonCloseDisplay.setText("Cerrar Display");
         buttonCloseDisplay.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +185,11 @@ public class AbsenceRegistry extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDocenteInasistencias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDocenteInasistenciasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,18 +198,17 @@ public class AbsenceRegistry extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
+                        .addGap(210, 210, 210)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labelFrom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelTeacher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                             .addComponent(labelTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(buttonAddTeacher)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(textFieldFrom)
-                                .addComponent(textFieldTo, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(buttonAddAbsence)
+                            .addComponent(textFieldDesde)
+                            .addComponent(textFieldHasta, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(cbDocenteInasistencias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -138,16 +235,16 @@ public class AbsenceRegistry extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelTeacher)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbDocenteInasistencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(textFieldFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textFieldDesde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(labelFrom))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textFieldHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelTo))
                 .addGap(18, 18, 18)
-                .addComponent(buttonAddTeacher)
+                .addComponent(buttonAddAbsence)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -169,10 +266,59 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         mainMenu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
-
+ 
     private void buttonCloseDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCloseDisplayActionPerformed
         display.setVisible(false);
     }//GEN-LAST:event_buttonCloseDisplayActionPerformed
+
+    private void cbDocenteInasistenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDocenteInasistenciasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDocenteInasistenciasActionPerformed
+
+    private void textFieldDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldDesdeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldDesdeActionPerformed
+
+    private void textFieldHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldHastaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldHastaActionPerformed
+
+    private void buttonAddAbsenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAddAbsenceActionPerformed
+int index = cbDocenteInasistencias.getSelectedIndex();
+        
+        if (index == -1 || listaDocentes == null || listaDocentes.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Por favor seleccione un docente", 
+                "Error", 
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        String desde = textFieldDesde.getText().trim();
+        String hasta = textFieldHasta.getText().trim();
+        
+        if (desde.isEmpty() || hasta.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Por favor complete las fechas de inicio y fin", 
+                "Error", 
+                javax.swing.JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Docente docente = listaDocentes.get(index);
+        control.crearInasistencia(docente.getCI(), desde, hasta);
+        
+        textFieldDesde.setText("");
+        textFieldHasta.setText("");
+        cbDocenteInasistencias.setSelectedIndex(-1);
+        
+        cargarTablaInasistencias();
+        
+        javax.swing.JOptionPane.showMessageDialog(this, 
+            "Inasistencia registrada correctamente", 
+            "Éxito", 
+            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_buttonAddAbsenceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,18 +326,18 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buttonAddTeacher;
+    private javax.swing.JButton buttonAddAbsence;
     private javax.swing.JButton buttonCloseDisplay;
     private javax.swing.JButton buttonReturn;
     private javax.swing.JButton buttonShowDisplay;
+    private javax.swing.JComboBox<String> cbDocenteInasistencias;
     private javax.swing.JLabel headerAbsenceRegistry;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelFrom;
     private javax.swing.JLabel labelTeacher;
     private javax.swing.JLabel labelTo;
-    private javax.swing.JTable tableAbsenceRegistryMain;
-    private javax.swing.JTextField textFieldFrom;
-    private javax.swing.JTextField textFieldTo;
+    private javax.swing.JTable tablaInasistencias;
+    private javax.swing.JTextField textFieldDesde;
+    private javax.swing.JTextField textFieldHasta;
     // End of variables declaration//GEN-END:variables
 }

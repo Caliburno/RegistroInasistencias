@@ -26,20 +26,18 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="labelFrom" alignment="1" max="32767" attributes="0"/>
                           <Component id="labelTeacher" alignment="1" pref="69" max="32767" attributes="0"/>
                           <Component id="labelTo" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="buttonAddTeacher" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="textFieldFrom" max="32767" attributes="0"/>
-                              <Component id="textFieldTo" pref="165" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="buttonAddAbsence" min="-2" max="-2" attributes="0"/>
+                          <Component id="textFieldDesde" max="32767" attributes="0"/>
+                          <Component id="textFieldHasta" pref="165" max="32767" attributes="0"/>
+                          <Component id="cbDocenteInasistencias" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -75,20 +73,20 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cbDocenteInasistencias" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="textFieldFrom" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldDesde" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="labelFrom" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="textFieldTo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="textFieldHasta" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelTo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="buttonAddTeacher" min="-2" max="-2" attributes="0"/>
+              <Component id="buttonAddAbsence" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="157" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -111,9 +109,15 @@
         <Property name="text" type="java.lang.String" value="Registro de Inasistencias"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldFrom">
+    <Component class="javax.swing.JTextField" name="textFieldDesde">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldDesdeActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="textFieldTo">
+    <Component class="javax.swing.JTextField" name="textFieldHasta">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldHastaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelTeacher">
       <Properties>
@@ -130,10 +134,13 @@
         <Property name="text" type="java.lang.String" value="Hasta"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonAddTeacher">
+    <Component class="javax.swing.JButton" name="buttonAddAbsence">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAddAbsenceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonReturn">
       <Properties>
@@ -158,7 +165,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tableAbsenceRegistryMain">
+        <Component class="javax.swing.JTable" name="tablaInasistencias">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="4">
@@ -180,17 +187,15 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCloseDisplayActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="cbDocenteInasistencias">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDocenteInasistenciasActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
