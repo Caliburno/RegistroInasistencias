@@ -367,23 +367,14 @@ public class TeacherRegistry extends javax.swing.JFrame {
         textFieldCI.setText("");
         textFieldNameTeacher.setText("");
         cargarDoceTabla();
+        cbElegirDocente.removeAllItems();
+        listaDocentes();
+        cargarAsigTabla();
     }//GEN-LAST:event_buttonAddTeacherActionPerformed
 
     //aca recorrer todos los docentes
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        cargarDoceTabla();
-        cargarAsigTabla();
-        listaDocentes = control.traerDocentes();
-        if(listaDocentes != null){
-            for(Docente d : listaDocentes)
-                cbElegirDocente.addItem(d.getNombreDocente()); //acá me da el error
-            
-        }
-        for (Turno t : Turno.values())
-            cbElegirTurno.addItem(t.toString());
-        
-        for (DayOfWeek d : DayOfWeek.values())
-            cbElegirDia.addItem(d.toString());
+        listaDocentes();
     }//GEN-LAST:event_formWindowOpened
 
     private void textFieldCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCIActionPerformed
@@ -414,6 +405,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
         textFieldMateria.setText("");
         textFieldGrupo.setText("");
         cargarAsigTabla();
+        cargarDoceTabla();
     }//GEN-LAST:event_buttonAgregarAsignaturaActionPerformed
 
     private void cbElegirTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbElegirTurnoActionPerformed
@@ -530,4 +522,23 @@ private void cargarDoceTabla() {
         }      
         asigTabla.setModel(tablaModelAsig);
     }
+
+    public void listaDocentes(){
+        cargarDoceTabla();
+        cargarAsigTabla();
+        listaDocentes = control.traerDocentes();
+        if(listaDocentes != null){
+            for(Docente d : listaDocentes)
+                cbElegirDocente.addItem(d.getNombreDocente()); //acá me da el error
+            
+        }
+        for (Turno t : Turno.values())
+            cbElegirTurno.addItem(t.toString());
+        
+        for (DayOfWeek d : DayOfWeek.values())
+            cbElegirDia.addItem(d.toString());
+        }
+    
+    
+    
 }
