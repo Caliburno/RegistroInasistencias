@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
     Controladora control = new Controladora();
+    //lo ponemos como una variable global para que pueda ser utilizada en otro momento dentro de la sesions
+    String ci = "";
     private MainMenu mainMenu;
     private CreateAccount createAccount;
     private Display display;
@@ -170,7 +172,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        String ci = textfieldCiLogin.getText();
+         ci = textfieldCiLogin.getText();
         String password = passwordfieldLogin.getText();
         if(control.verificarCI(ci)){
             if(control.verificarUsuario(ci, password)){
@@ -223,4 +225,8 @@ public void mostrarMensaje(String mensaje, String tipo, String titulo){
                 dialog.setAlwaysOnTop(true);
                 dialog.setVisible(true);
     }
+
+public String devuelveCI(){
+    return ci;
+}
 }

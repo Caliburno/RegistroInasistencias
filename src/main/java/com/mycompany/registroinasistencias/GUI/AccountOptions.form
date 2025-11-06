@@ -37,10 +37,10 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="buttonCHangePassword" min="-2" max="-2" attributes="0"/>
-                                  <Component id="passwordFieldNew" alignment="0" pref="128" max="32767" attributes="0"/>
-                                  <Component id="passwordFieldNewRepeat" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtpasswordFieldNew" alignment="0" pref="128" max="32767" attributes="0"/>
+                                  <Component id="txtpasswordFieldNewRepeat" alignment="0" max="32767" attributes="0"/>
                                   <Component id="buttonCreateAccountOptions" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="passwordFieldCurrent" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtpasswordFieldCurrent" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -64,17 +64,17 @@
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelCurrentPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="passwordFieldCurrent" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtpasswordFieldCurrent" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="passwordFieldNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtpasswordFieldNew" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="labelNewPassword" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelRepeatPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="passwordFieldNewRepeat" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtpasswordFieldNewRepeat" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="buttonCHangePassword" min="-2" max="-2" attributes="0"/>
@@ -111,14 +111,17 @@
         <Property name="text" type="java.lang.String" value="Repita contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordFieldNew">
+    <Component class="javax.swing.JPasswordField" name="txtpasswordFieldNew">
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordFieldNewRepeat">
+    <Component class="javax.swing.JPasswordField" name="txtpasswordFieldNewRepeat">
     </Component>
     <Component class="javax.swing.JButton" name="buttonCHangePassword">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cambiar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonCHangePasswordActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="buttonCreateAccountOptions">
       <Properties>
@@ -136,7 +139,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonReturnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordFieldCurrent">
+    <Component class="javax.swing.JPasswordField" name="txtpasswordFieldCurrent">
     </Component>
   </SubComponents>
 </Form>

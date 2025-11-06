@@ -1,8 +1,11 @@
 package com.mycompany.registroinasistencias.Logica;
 
 import com.mycompany.registroinasistencias.Persistence.ControladoraPersistencia;
+import com.mycompany.registroinasistencias.Persistence.PersistenciaAsignatura;
+import com.mycompany.registroinasistencias.Persistence.PersistenciaDocente;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -15,7 +18,34 @@ import org.mindrot.jbcrypt.BCrypt;
 public class Controladora {
     ControladoraPersistencia controlPersis = new ControladoraPersistencia();
     
-
+PersistenciaDocente pd = new PersistenciaDocente();
+    PersistenciaAsignatura pa = new PersistenciaAsignatura();
+    
+    public List<Docente> traerDocentes() {
+        try {
+            // Este método ya trae los docentes CON sus asignaturas cargadas
+            return pd.traerDocentes();
+        } catch (Exception e) {
+            System.out.println("Error en controladora: " + e);
+            return new ArrayList<>();
+        }
+    }
+    
+    public Docente traerDocente(String ci) {
+        // Este método trae un docente CON sus asignaturas
+        return pd.leerDocente(ci);
+    }
+    
+    public List<Asignatura> traerAsignaturas() {
+        try {
+            return pa.traerAsignaturas();
+        } catch (Exception e) {
+            System.out.println("Error en controladora: " + e);
+            return new ArrayList<>();
+        }
+    }
+    
+    //modificar lo de arriba
     public boolean verificarUsuario(String ci, String contraUsu) {
        // llama a una funcionn para traer la password que coincida con la clave primaria de Usuario
        String passwordDataBase =  controlPersis.traerPassword(ci, contraUsu);
@@ -93,13 +123,13 @@ public class Controladora {
     };
     
     
-    public List<Docente> traerDocentes() {
+   /* public List<Docente> traerDocentes() {
         return controlPersis.traerDocentes();
     }
 
     public List<Asignatura> traerAsignaturas() {
         return controlPersis.traerAsignaturas();
-    }
+    }*/
     
     public List<Inasistencia> traerInasistencias() {
         return controlPersis.traerInasistencias();

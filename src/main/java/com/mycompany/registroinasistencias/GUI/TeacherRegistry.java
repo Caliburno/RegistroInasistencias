@@ -521,9 +521,9 @@ private void cargarDoceTabla() {
         listaDocentes = control.traerDocentes();
         if(listaDocentes != null){
             for(Docente d : listaDocentes)
-                cbElegirDocente.addItem(d.getNombreDocente()); //acá me da el error
+                cbElegirDocente.addItem(d.getCI()); //acá me da el error
             
-        }
+        } 
         for (Turno t : Turno.values())
             cbElegirTurno.addItem(t.toString());
         

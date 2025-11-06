@@ -1,11 +1,16 @@
 package com.mycompany.registroinasistencias.GUI;
 
+import com.mycompany.registroinasistencias.Logica.Controladora;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dario
  */
 public class AccountOptions extends javax.swing.JFrame {
-
+    Controladora control = new Controladora();
+    Login login = new Login();
     private MainMenu mainMenu;
     private CreateAccount createAccount;
     
@@ -37,12 +42,12 @@ public class AccountOptions extends javax.swing.JFrame {
         labelCurrentPassword = new javax.swing.JLabel();
         labelNewPassword = new javax.swing.JLabel();
         labelRepeatPassword = new javax.swing.JLabel();
-        passwordFieldNew = new javax.swing.JPasswordField();
-        passwordFieldNewRepeat = new javax.swing.JPasswordField();
+        txtpasswordFieldNew = new javax.swing.JPasswordField();
+        txtpasswordFieldNewRepeat = new javax.swing.JPasswordField();
         buttonCHangePassword = new javax.swing.JButton();
         buttonCreateAccountOptions = new javax.swing.JButton();
         buttonReturn = new javax.swing.JButton();
-        passwordFieldCurrent = new javax.swing.JPasswordField();
+        txtpasswordFieldCurrent = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +61,11 @@ public class AccountOptions extends javax.swing.JFrame {
         labelRepeatPassword.setText("Repita contraseña");
 
         buttonCHangePassword.setText("Cambiar");
+        buttonCHangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCHangePasswordActionPerformed(evt);
+            }
+        });
 
         buttonCreateAccountOptions.setText("Crear cuenta");
         buttonCreateAccountOptions.addActionListener(new java.awt.event.ActionListener() {
@@ -88,10 +98,10 @@ public class AccountOptions extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(buttonCHangePassword)
-                                    .addComponent(passwordFieldNew, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                                    .addComponent(passwordFieldNewRepeat)
+                                    .addComponent(txtpasswordFieldNew, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(txtpasswordFieldNewRepeat)
                                     .addComponent(buttonCreateAccountOptions)
-                                    .addComponent(passwordFieldCurrent)))
+                                    .addComponent(txtpasswordFieldCurrent)))
                             .addComponent(jLabel1))
                         .addGap(0, 133, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -107,15 +117,15 @@ public class AccountOptions extends javax.swing.JFrame {
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCurrentPassword)
-                    .addComponent(passwordFieldCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpasswordFieldCurrent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordFieldNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtpasswordFieldNew, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelNewPassword))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelRepeatPassword)
-                    .addComponent(passwordFieldNewRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtpasswordFieldNewRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(buttonCHangePassword)
                 .addGap(44, 44, 44)
@@ -140,10 +150,41 @@ public class AccountOptions extends javax.swing.JFrame {
         
     }//GEN-LAST:event_buttonCreateAccountOptionsActionPerformed
 
+    private void buttonCHangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCHangePasswordActionPerformed
+        String anteriorPassword = txtpasswordFieldCurrent.getText();
+        String nuevaPassword = txtpasswordFieldNew.getText();
+        String repeatPassword = txtpasswordFieldNewRepeat.getText();
+        
+        if(!nuevaPassword.equals(repeatPassword)){
+            mostrarMensaje("La contraseñas no son iguales", "Error", "Error al cambiar contraseña");
+        }else{
+            if(control.verificarCI(login.devuelveCI())){
+                
+            }
+            
+            
+        }
+        
+    }//GEN-LAST:event_buttonCHangePasswordActionPerformed
+
     /**
      * @param args the command line arguments
      */
-  
+
+    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+                JOptionPane optionPane = new JOptionPane(mensaje);
+                if(tipo.equals("Info")){
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(tipo.equals("Error")){
+                    optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                }
+                JDialog dialog = optionPane.createDialog(titulo);
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCHangePassword;
     private javax.swing.JButton buttonCreateAccountOptions;
@@ -152,8 +193,9 @@ public class AccountOptions extends javax.swing.JFrame {
     private javax.swing.JLabel labelCurrentPassword;
     private javax.swing.JLabel labelNewPassword;
     private javax.swing.JLabel labelRepeatPassword;
-    private javax.swing.JPasswordField passwordFieldCurrent;
-    private javax.swing.JPasswordField passwordFieldNew;
-    private javax.swing.JPasswordField passwordFieldNewRepeat;
+    private javax.swing.JPasswordField txtpasswordFieldCurrent;
+    private javax.swing.JPasswordField txtpasswordFieldNew;
+    private javax.swing.JPasswordField txtpasswordFieldNewRepeat;
     // End of variables declaration//GEN-END:variables
 }
+

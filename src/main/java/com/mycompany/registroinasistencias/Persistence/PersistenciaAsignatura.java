@@ -1,6 +1,7 @@
 package com.mycompany.registroinasistencias.Persistence;
 
 import com.mycompany.registroinasistencias.Logica.Asignatura;
+import com.mycompany.registroinasistencias.Logica.Docente;
 import com.mycompany.registroinasistencias.Logica.Turno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -77,40 +78,45 @@ public class PersistenciaAsignatura {
 }
     
     
-    public List<Asignatura> traerAsignaturas() throws Exception, SQLException{
+   
+    
+    public List<Asignatura> traerAsignaturas() throws Exception, SQLException {
         List<Asignatura> listaAsignaturas = new ArrayList<>();
-       try(Connection con = cone.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_LEER_ASIGNATURAS);){
+        
+        try (Connection con = cone.getConnection();
+             PreparedStatement ps = con.prepareStatement(SQL_LEER_ASIGNATURAS)) {
            
-           ResultSet rs = ps.executeQuery();
-           while (rs.next()) {
-            String docente = rs.getString("docente");
-            String nombre = rs.getString("nombre");
-            String grupo = rs.getString("grupo");
-            String dia = rs.getString("dia");
-            String turno = rs.getString("turno");
+            ResultSet rs = ps.executeQuery();
             
+            while (rs.next()) {
+                String ciDocente = rs.getString("docente");
+                String nombre = rs.getString("nombre");
+                String grupo = rs.getString("grupo");
+                String dia = rs.getString("dia");
+                String turno = rs.getString("turno");
+                
+              
+                Asignatura asignatura = new Asignatura();
+                asignatura.setNombreAsignatura(nombre);
+                asignatura.setGrupo(grupo);
+                asignatura.setDia(DayOfWeek.valueOf(dia));
+                asignatura.setTurno(Turno.valueOf(turno));
+                
+               
+                Docente docente = pd.leerDocenteSimple(ciDocente);
+                asignatura.setDocente(docente);
+                
+                listaAsignaturas.add(asignatura);
+            }
+            rs.close();
             
-            Asignatura asignatura = new Asignatura();
-            asignatura.setDocente(pd.leerDocente(docente));
-            asignatura.setNombreAsignatura(nombre);
-            asignatura.setGrupo(grupo);
-            asignatura.setDia(DayOfWeek.valueOf(dia));
-            asignatura.setTurno(Turno.valueOf(turno));
-            
-            
-            listaAsignaturas.add(asignatura);
+        } catch (SQLException e) {
+            System.out.println(e);
+            throw new Exception("No se pudieron obtener las asignaturas");
         }
-        rs.close();
         
-        
-    } catch (SQLException e) {
-        System.out.println(e);
-        throw new Exception("No se pudieron obtener las asignaturas");
+        return listaAsignaturas;
     }
-    
-    return listaAsignaturas;
-    }
-    
+
     
 }
