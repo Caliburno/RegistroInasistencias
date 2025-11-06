@@ -33,7 +33,7 @@ public void crearInasistencia(Inasistencia ina) throws Exception, SQLException{
             
             int resultado = 0;
             
-            ps.setString(1, ina.getDocente().toString());
+            ps.setString(1, ina.getDocente().getCI());
             ps.setString(2, ina.getDesde().toString());
             ps.setString(3, ina.getHasta().toString());
              
@@ -45,14 +45,14 @@ public void crearInasistencia(Inasistencia ina) throws Exception, SQLException{
         }
     } 
     
-    public void eliminarInasistencia(String ci) throws SQLException, Exception{
+    public void eliminarInasistencia(String id) throws SQLException, Exception{
 
         try(Connection con = cone.getConnection();
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_INASISTENCIA);) {
             
 
            String eliminacion = null;
-            ps.setString(1, ci);
+            ps.setString(1, id);
             int resultado = ps.executeUpdate();
 
             if (rs.next()) {

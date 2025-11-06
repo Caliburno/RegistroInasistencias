@@ -2,6 +2,7 @@ package com.mycompany.registroinasistencias.Logica;
 
 import com.mycompany.registroinasistencias.Persistence.ControladoraPersistencia;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -51,23 +52,32 @@ public class Controladora {
     }
 
     public void crearAsignatura(Docente docente, String nameSubject, String group, String days, String turno) {
-        System.out.println("creando dentro de controladora");
         Asignatura asi = new Asignatura();
         asi.setDocente(docente);
-        System.out.println("docente");
         asi.setNombreAsignatura(nameSubject);
-        System.out.println("nombre");
         asi.setGrupo(group);
-        System.out.println("grupo");
         asi.setDia(DayOfWeek.valueOf(days));
-        System.out.println("dia");
         asi.setTurno(Turno.valueOf(turno));
-        System.out.println("turno");
         controlPersis.crearAsignatura(asi);
     }
 
-    public void crearInasistencia(String docente, String desde, String hasta) {
-        
+    public void crearInasistencia(String docenteCI, String desde, String hasta) {
+        Inasistencia inas = new Inasistencia();
+    
+    Docente docente = controlPersis.leerDocente(docenteCI);
+    
+    if(docente == null) {
+        System.out.println("Error: Docente no encontrado");
+        return;
+    }
+    LocalDate fechaDesde = LocalDate.parse(desde);
+    LocalDate fechaHasta = LocalDate.parse(hasta);
+    
+    inas.setDocente(docente);
+    inas.setDesde(fechaDesde);
+    inas.setHasta(fechaHasta);
+    
+    controlPersis.crearInasistencia(inas);
     }
     
     public void borrarDocente(Docente doce){

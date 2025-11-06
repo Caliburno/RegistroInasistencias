@@ -382,26 +382,18 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldCIActionPerformed
 
     private void buttonAgregarAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarAsignaturaActionPerformed
-        System.out.println("boton agregar");
         int index = cbElegirDocente.getSelectedIndex(); // Obtener el índice
         
         if (index == -1 || listaDocentes == null) {
-            System.out.println("null");
             return;
         }
         Docente docente = listaDocentes.get(index);
-        System.out.println("creando en registro");
         String nameSubject = textFieldMateria.getText();
-        System.out.println("nombre");
         String group = textFieldGrupo.getText();
-        System.out.println("grupo");
         String days = (String) cbElegirDia.getSelectedItem();
-        System.out.println("dia");
         String turno = (String) cbElegirTurno.getSelectedItem();
-        System.out.println("turno");
         
         control.crearAsignatura(docente, nameSubject, group, days, turno);
-        System.out.println("crear");
         textFieldMateria.setText("");
         textFieldGrupo.setText("");
         cargarAsigTabla();

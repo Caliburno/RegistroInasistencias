@@ -104,9 +104,9 @@ public class ControladoraPersistencia {
         return null;
     }
     
-    public void crearInasistencia(Inasistencia materia) {
+    public void crearInasistencia(Inasistencia inas) {
         try {
-            perIna.crearInasistencia(materia);
+            perIna.crearInasistencia(inas);
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -123,16 +123,6 @@ public class ControladoraPersistencia {
         } catch (Exception ex) {
             Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
-        
+        return null;   
     }
-
-
-    
-
-    
-  
-  
-
-    
 }
