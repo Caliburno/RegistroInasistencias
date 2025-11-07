@@ -63,8 +63,12 @@ public class ControladoraPersistencia {
     }
 
     
-    public void borrarDocente(Docente doce){
-        
+    public void borrarDocente(String doce){
+        try {
+            perDoce.eliminarDocente(doce);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     };
     
     public Docente leerDocente(String ci){
@@ -91,8 +95,12 @@ public class ControladoraPersistencia {
         }
     }
     
-    public void borrarAsignatura(Asignatura materia){
-        
+    public void borrarAsignatura(int materiaId){
+        try {
+            perAsig.eliminarAsignatura(materiaId);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     };
      
     public List<Asignatura> traerAsignaturas() {

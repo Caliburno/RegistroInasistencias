@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 
 public class Asignatura {
 
+    private int id;
     private Docente docente;
     private String nombreAsignatura;
     private String grupo;
@@ -13,7 +14,8 @@ public class Asignatura {
     public Asignatura() {
     }
 
-    public Asignatura(Docente docente, String nombreAsignatura, String grupo, DayOfWeek dia, Turno turno) {
+    public Asignatura(int id,Docente docente, String nombreAsignatura, String grupo, DayOfWeek dia, Turno turno) {
+        this.id = id;
         this.docente = docente;
         this.nombreAsignatura = nombreAsignatura;
         this.grupo = grupo;
@@ -21,6 +23,15 @@ public class Asignatura {
         this.turno = turno;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public String getNombreAsignatura() {
         return nombreAsignatura;
     }

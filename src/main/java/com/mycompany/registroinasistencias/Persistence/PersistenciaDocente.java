@@ -23,11 +23,13 @@ public class PersistenciaDocente {
     private final static String SQL_CREAR_DOCENTE = ("INSERT INTO ausentbase.Docente(ci, nombre)VALUES (?,?)");
     private final static String SQL_LEER_DOCENTES = ("SELECT * FROM ausentbase.Docente");
     private final static String SQL_LEER_DOCENTE = ("SELECT * FROM ausentbase.Docente WHERE ci=?");
-    private final static String SQL_ELIMINAR_DOCENTE = ("Delete FROM ausentbase.Docente WHERE ci=?");
+    
+    private final static String SQL_ELIMINAR_DOCENTE = ("DELETE FROM ausentbase.Docente WHERE ci = (?);");
+    
     
     public Conexion cone = new Conexion();
-    public PreparedStatement ps;
-    public ResultSet rs;
+   // public PreparedStatement ps;
+    //public ResultSet rs;
 
     public void crearDocente(Docente doce) throws Exception, SQLException{
         try(Connection con = cone.getConnection();
@@ -48,16 +50,17 @@ public class PersistenciaDocente {
     
     public void eliminarDocente(String ci) throws SQLException, Exception{
         try(Connection con = cone.getConnection();
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_DOCENTE);) {
+               
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_DOCENTE);
+                ) {
             
            String eliminacion = null;
+           
             ps.setString(1, ci);
             int resultado = ps.executeUpdate();
 
-            if (rs.next()) {
-                eliminacion = "Persona Eliminada";
-            } else {
-                eliminacion = "La persona  que desea eliminar no se encuentra";
+            if (resultado == 0) {
+                throw new Exception("El docente no existe");
             }
             con.close();
         } catch (Exception e) {

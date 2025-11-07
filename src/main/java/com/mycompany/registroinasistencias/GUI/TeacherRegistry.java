@@ -6,6 +6,8 @@ import com.mycompany.registroinasistencias.Logica.Docente;
 import com.mycompany.registroinasistencias.Logica.Turno;
 import java.time.DayOfWeek;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -420,11 +422,38 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }//GEN-LAST:event_cbElegirDocenteActionPerformed
 
     private void buttonDeleteTeacherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteTeacherActionPerformed
+        if(doceTabla.getRowCount() > 0){
+            if(doceTabla.getSelectedRow() != -1){
+                String docenteCi = String.valueOf(doceTabla.getValueAt(doceTabla.getSelectedRow(), 1));
+                control.borrarDocente(docenteCi);
+                
+                mostrarMensaje("Docente se ha eliminado correctamente", "Info", "Docente eliminado");
+                cargarDoceTabla();
+            }else{
+                mostrarMensaje("No se ha seleccionado ningun docente", "Error", "Error al eliminar");
+            }
+        }else{
+            mostrarMensaje("No hay nada para eliminar de la tabla", "Error", "Error al eliminar");
+        }
         
     }//GEN-LAST:event_buttonDeleteTeacherActionPerformed
 
     private void buttonDeleteMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteMateriaActionPerformed
-        // TODO add your handling code here:
+         if(asigTabla.getRowCount() > 0){
+            if(asigTabla.getSelectedRow() != -1){
+                int asignaturaId = Integer.parseInt(String.valueOf(asigTabla.getValueAt(asigTabla.getSelectedRow(), 0)));
+                control.borrarAsignatura(asignaturaId);
+                
+                mostrarMensaje("La asignatura se ha eliminado correctamente", "Info", "Asignatura eliminado");
+                cargarAsigTabla();
+            }else{
+                mostrarMensaje("No se ha seleccionado ninguna asignatura", "Error", "Error al eliminar");
+            }
+        }else{
+            mostrarMensaje("No hay nada para eliminar de la tabla", "Error", "Error al eliminar");
+        }
+         
+         
     }//GEN-LAST:event_buttonDeleteMateriaActionPerformed
 
     /**
@@ -502,7 +531,7 @@ private void cargarDoceTabla() {
                 return false;
             }
         };
-        String titulos[] = {"Asignatura", "Docente", "Grupo", "Día de la semana", "Turno"};
+        String titulos[] = {"Id", "Asignatura", "Docente", "Grupo", "Día de la semana", "Turno"};
         tablaModelAsig.setColumnIdentifiers(titulos);
         
         List<Asignatura> listaAsignatura = control.traerAsignaturas();
@@ -510,6 +539,7 @@ private void cargarDoceTabla() {
         if(listaAsignatura != null && !listaAsignatura.isEmpty()){
             for(Asignatura a: listaAsignatura){            
                 Object[] object = {
+                    a.getId(),
                     a.getNombreAsignatura(), 
                     a.getDocente().getNombreDocente(), 
                     a.getGrupo(), 
@@ -538,6 +568,17 @@ private void cargarDoceTabla() {
             cbElegirDia.addItem(d.toString());
         }
     
-    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+                JOptionPane optionPane = new JOptionPane(mensaje);
+                if(tipo.equals("Info")){
+                        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                }
+                else if(tipo.equals("Error")){
+                    optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+                }
+                JDialog dialog = optionPane.createDialog(titulo);
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+    }
     
 }

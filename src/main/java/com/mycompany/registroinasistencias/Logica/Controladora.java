@@ -110,12 +110,12 @@ PersistenciaDocente pd = new PersistenciaDocente();
     controlPersis.crearInasistencia(inas);
     }
     
-    public void borrarDocente(Docente doce){
-        
+    public void borrarDocente(String docenteCi){
+        controlPersis.borrarDocente(docenteCi);
     };
     
-    public void borrarAsignatura(Asignatura materia){
-        
+    public void borrarAsignatura(int materia){
+        controlPersis.borrarAsignatura(materia);
     };
     
     public void borrarInasistencia(Inasistencia ina){
