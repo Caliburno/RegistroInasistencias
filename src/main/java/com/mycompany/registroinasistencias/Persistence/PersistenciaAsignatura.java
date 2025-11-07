@@ -22,7 +22,9 @@ public class PersistenciaAsignatura {
     
     private static final String SQL_CREAR_ASIGNATURA = ("INSERT INTO ausentbase.Asignatura(docente, nombre, grupo, dia, turno)VALUES (?,?,?,?,?)");
     private static final String SQL_LEER_ASIGNATURAS = ("SELECT * FROM ausentbase.Asignatura");
-    private static final String SQL_ELIMINAR_ASIGNATURA = "";
+    private static final String SQL_ELIMINAR_ASIGNATURA = "Delete FROM ausentbase.Asignatura WHERE id=?";
+    
+    
     
     public Conexion cone = new Conexion();
     public PreparedStatement ps;
@@ -54,21 +56,20 @@ public class PersistenciaAsignatura {
         }
     } 
     
-    public void eliminarAsignatura(String ci) throws SQLException, Exception{
+    public void eliminarAsignatura(int id) throws SQLException, Exception{
 
         try(Connection con = cone.getConnection();
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(SQL_ELIMINAR_ASIGNATURA);) {
             
 
-           String eliminacion = null;
-            ps.setString(1, ci);
+           
+            ps.setInt(1, id);
             int resultado = ps.executeUpdate();
 
-            if (rs.next()) {
-                eliminacion = "Asignatura Eliminada";
-
+            if (resultado == 0) {
+                throw new Exception("La asignatura con ID " + id + " no existe");
             } else {
-                eliminacion = "La asignatura  que desea eliminar no se encuentra";
+                System.out.println("Asignatura eliminada: " + id);
             }
             con.close();
         } catch (Exception e) {
@@ -90,6 +91,7 @@ public class PersistenciaAsignatura {
             
             while (rs.next()) {
                 String ciDocente = rs.getString("docente");
+                String id = rs.getString("id");
                 String nombre = rs.getString("nombre");
                 String grupo = rs.getString("grupo");
                 String dia = rs.getString("dia");
@@ -97,6 +99,7 @@ public class PersistenciaAsignatura {
                 
               
                 Asignatura asignatura = new Asignatura();
+                asignatura.setId(Integer.parseInt(id));
                 asignatura.setNombreAsignatura(nombre);
                 asignatura.setGrupo(grupo);
                 asignatura.setDia(DayOfWeek.valueOf(dia));
