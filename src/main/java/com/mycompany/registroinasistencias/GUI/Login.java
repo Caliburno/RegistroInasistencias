@@ -1,7 +1,6 @@
 package com.mycompany.registroinasistencias.GUI;
 
 import com.mycompany.registroinasistencias.Logica.Controladora;
-import java.util.Set;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
@@ -178,7 +177,6 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_textfieldCiLoginActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
-        createAccount.setVolverToAccountOptions(false);
         createAccount.setVisible(true);
         this.setVisible(false);
 

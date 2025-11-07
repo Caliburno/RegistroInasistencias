@@ -7,16 +7,11 @@ package com.mycompany.registroinasistencias.GUI;
 public class MainMenu extends javax.swing.JFrame {
 
     private AbsenceRegistry absenceRegistry;
-    private AccountOptions accountOptions;
     private TeacherRegistry teacherRegistry;
     private Display display;
     
     public void setAbsenceRegistry(AbsenceRegistry abasenceRegistry) {
         this.absenceRegistry = abasenceRegistry;
-    }
-    
-    public void setAccountOptions(AccountOptions accountOptions) {
-        this.accountOptions = accountOptions;
     }
     
     public void setTeacherRegistry(TeacherRegistry teacherRegistry) {
@@ -30,9 +25,6 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-       
-
-
     }
 
     /**
@@ -48,7 +40,6 @@ public class MainMenu extends javax.swing.JFrame {
         mainMenuHeader = new javax.swing.JLabel();
         buttonTeacherRegistry = new javax.swing.JButton();
         buttonAbsenceRegistry = new javax.swing.JButton();
-        buttonAccountOptions = new javax.swing.JButton();
         buttonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,20 +82,6 @@ public class MainMenu extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(18, 191, 0, 0);
         getContentPane().add(buttonAbsenceRegistry, gridBagConstraints);
 
-        buttonAccountOptions.setText("Opciones de Cuenta");
-        buttonAccountOptions.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAccountOptionsActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 191, 0, 0);
-        getContentPane().add(buttonAccountOptions, gridBagConstraints);
-
         buttonExit.setText("Salir");
         buttonExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,11 +108,6 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_buttonAbsenceRegistryActionPerformed
 
-    private void buttonAccountOptionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAccountOptionsActionPerformed
-        accountOptions.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_buttonAccountOptionsActionPerformed
-
     private void buttonExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExitActionPerformed
        display.dispose();
         this.dispose();
@@ -149,7 +121,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonAbsenceRegistry;
-    private javax.swing.JButton buttonAccountOptions;
     private javax.swing.JButton buttonExit;
     private javax.swing.JButton buttonTeacherRegistry;
     private javax.swing.JLabel mainMenuHeader;

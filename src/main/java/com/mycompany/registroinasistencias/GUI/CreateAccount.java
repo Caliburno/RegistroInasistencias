@@ -11,32 +11,19 @@ import javax.swing.JOptionPane;
 public class CreateAccount extends javax.swing.JFrame {
     Controladora control = new Controladora();
     private MainMenu mainMenu;
-    private AccountOptions accountOptions;
     private Login login;
-    private boolean volverToAccountOptions = false;
     
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
     }
     
-    public void setAccountOptions(AccountOptions accountOptions) {
-        this.accountOptions = accountOptions;
-    }
-    
     public void setLogin(Login login) {
         this.login = login;
-    }
-
-    public void setVolverToAccountOptions(boolean volverToAccountOptions) {
-        this.volverToAccountOptions = volverToAccountOptions;
     }
     
     public CreateAccount() {
         initComponents();
         this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-        
-
-
     }
 
     /**
@@ -151,13 +138,8 @@ public class CreateAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonReturnActionPerformed
-        if (volverToAccountOptions) {
-            accountOptions.setVisible(true);
-            this.setVisible(false);
-        } else {
-            login.setVisible(true);
-            this.setVisible(false);
-        }
+        login.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_buttonReturnActionPerformed
 
     private void buttonCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateAccountActionPerformed
@@ -178,8 +160,6 @@ public class CreateAccount extends javax.swing.JFrame {
         }else{
             mostrarMensaje("Complete todos los campos", "Error", "Error al login");
         }
-        
-        
     }//GEN-LAST:event_buttonCreateAccountActionPerformed
 
     private void textFieldCIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldCIActionPerformed
