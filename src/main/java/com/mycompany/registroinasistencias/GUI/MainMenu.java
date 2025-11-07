@@ -39,6 +39,7 @@ public class MainMenu extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         mainMenuHeader = new javax.swing.JLabel();
         buttonTeacherRegistry = new javax.swing.JButton();
@@ -47,9 +48,17 @@ public class MainMenu extends javax.swing.JFrame {
         buttonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         mainMenuHeader.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         mainMenuHeader.setText("Menú Principal");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(19, 141, 0, 0);
+        getContentPane().add(mainMenuHeader, gridBagConstraints);
 
         buttonTeacherRegistry.setText("Fichas Docentes");
         buttonTeacherRegistry.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +66,13 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonTeacherRegistryActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 25;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(41, 191, 0, 0);
+        getContentPane().add(buttonTeacherRegistry, gridBagConstraints);
 
         buttonAbsenceRegistry.setText("Ingreso Inasistencias");
         buttonAbsenceRegistry.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +80,12 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonAbsenceRegistryActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 191, 0, 0);
+        getContentPane().add(buttonAbsenceRegistry, gridBagConstraints);
 
         buttonAccountOptions.setText("Opciones de Cuenta");
         buttonAccountOptions.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +93,13 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonAccountOptionsActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 191, 0, 0);
+        getContentPane().add(buttonAccountOptions, gridBagConstraints);
 
         buttonExit.setText("Salir");
         buttonExit.addActionListener(new java.awt.event.ActionListener() {
@@ -78,42 +107,12 @@ public class MainMenu extends javax.swing.JFrame {
                 buttonExitActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 141, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(buttonAbsenceRegistry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonAccountOptions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttonTeacherRegistry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(183, 183, 183))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mainMenuHeader)
-                        .addGap(131, 131, 131))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(buttonExit)
-                        .addContainerGap())))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(mainMenuHeader)
-                .addGap(41, 41, 41)
-                .addComponent(buttonTeacherRegistry)
-                .addGap(18, 18, 18)
-                .addComponent(buttonAbsenceRegistry)
-                .addGap(18, 18, 18)
-                .addComponent(buttonAccountOptions)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                .addComponent(buttonExit)
-                .addContainerGap())
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(144, 53, 6, 6);
+        getContentPane().add(buttonExit, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

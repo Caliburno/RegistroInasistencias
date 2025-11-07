@@ -12,7 +12,7 @@ public class Conexion {
      public static Connection getConnection() throws Exception {
         Connection con=null;
         try{
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ausentbase?serverTimezone=UTC","root","root");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ausentbase?serverTimezone=UTC","root","Benicio28975");
         }catch(SQLException sqle){
         throw new Exception("Error de conexion");
     }
