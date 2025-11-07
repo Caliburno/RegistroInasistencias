@@ -33,6 +33,10 @@ public class CreateAccount extends javax.swing.JFrame {
     
     public CreateAccount() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
+
+
     }
 
     /**

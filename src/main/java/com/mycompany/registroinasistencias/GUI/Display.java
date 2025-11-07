@@ -10,6 +10,9 @@ public class Display extends javax.swing.JFrame {
      */
     public Display() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+
     }
 
     /**

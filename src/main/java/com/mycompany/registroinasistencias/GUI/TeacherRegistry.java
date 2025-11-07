@@ -28,7 +28,11 @@ public class TeacherRegistry extends javax.swing.JFrame {
     }
     
     public TeacherRegistry() {
-        initComponents();        
+        initComponents();   
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        
+
+
     }
 
     

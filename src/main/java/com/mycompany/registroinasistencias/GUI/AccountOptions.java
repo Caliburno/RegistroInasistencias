@@ -27,6 +27,10 @@ public class AccountOptions extends javax.swing.JFrame {
      */
     public AccountOptions() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+       
+
+
     }
 
     /**

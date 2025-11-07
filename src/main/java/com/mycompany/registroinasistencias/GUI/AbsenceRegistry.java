@@ -92,6 +92,9 @@ public class AbsenceRegistry extends javax.swing.JFrame {
     
     public AbsenceRegistry() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+
+
         cargarComboDocentes();  
         cargarTablaInasistencias();  
     }

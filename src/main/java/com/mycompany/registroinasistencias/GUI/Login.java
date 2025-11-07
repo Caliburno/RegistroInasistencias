@@ -34,6 +34,10 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+       
+
+
     }
 
     /**
@@ -46,6 +50,10 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanelcontenedorr = new javax.swing.JPanel();
         buttonLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         labelUsernameLogin = new javax.swing.JLabel();
@@ -56,8 +64,12 @@ public class Login extends javax.swing.JFrame {
         passwordfieldLogin = new javax.swing.JPasswordField();
         butonExitLogin = new javax.swing.JButton();
 
+        jCheckBox1.setText("jCheckBox1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jPanelcontenedorr.setLayout(new java.awt.GridBagLayout());
 
         buttonLogin.setText("Ingresar");
         buttonLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -68,9 +80,8 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 78, 0, 0);
-        getContentPane().add(buttonLogin, gridBagConstraints);
+        jPanelcontenedorr.add(buttonLogin, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Bienvenido a AusentApp");
@@ -78,10 +89,12 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = -14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(18, 72, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
+        jPanelcontenedorr.add(jLabel1, gridBagConstraints);
 
         labelUsernameLogin.setText("Cedula");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -89,9 +102,8 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.ipadx = 84;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 92, 0, 0);
-        getContentPane().add(labelUsernameLogin, gridBagConstraints);
+        jPanelcontenedorr.add(labelUsernameLogin, gridBagConstraints);
 
         textfieldCiLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,9 +115,8 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 159;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
-        getContentPane().add(textfieldCiLogin, gridBagConstraints);
+        jPanelcontenedorr.add(textfieldCiLogin, gridBagConstraints);
 
         labelPasswordLogin.setText("Contraseña");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -114,9 +125,8 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 59;
         gridBagConstraints.ipady = -1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 83, 0, 0);
-        getContentPane().add(labelPasswordLogin, gridBagConstraints);
+        jPanelcontenedorr.add(labelPasswordLogin, gridBagConstraints);
 
         buttonCreateAccount.setText("Crear");
         buttonCreateAccount.addActionListener(new java.awt.event.ActionListener() {
@@ -128,26 +138,23 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 7, 6, 0);
-        getContentPane().add(buttonCreateAccount, gridBagConstraints);
+        jPanelcontenedorr.add(buttonCreateAccount, gridBagConstraints);
 
         jLabel4.setText("No tienes una cuenta?");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 32, 0, 6);
-        getContentPane().add(jLabel4, gridBagConstraints);
+        jPanelcontenedorr.add(jLabel4, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.ipadx = 159;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
-        getContentPane().add(passwordfieldLogin, gridBagConstraints);
+        jPanelcontenedorr.add(passwordfieldLogin, gridBagConstraints);
 
         butonExitLogin.setText("Salir");
         butonExitLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -158,9 +165,10 @@ public class Login extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(12, 6, 6, 0);
-        getContentPane().add(butonExitLogin, gridBagConstraints);
+        jPanelcontenedorr.add(butonExitLogin, gridBagConstraints);
+
+        getContentPane().add(jPanelcontenedorr, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,8 +218,12 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton butonExitLogin;
     private javax.swing.JButton buttonCreateAccount;
     private javax.swing.JButton buttonLogin;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelcontenedorr;
     private javax.swing.JLabel labelPasswordLogin;
     private javax.swing.JLabel labelUsernameLogin;
     private javax.swing.JPasswordField passwordfieldLogin;
