@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Dario
  */
-public class Display extends javax.swing.JFrame {
+public class Display extends javax.swing.JDialog {
 
     Controladora control = new Controladora();
         private List<Docente> listaDocentes;
@@ -23,9 +23,6 @@ public class Display extends javax.swing.JFrame {
      */
     public Display() {
         initComponents();
-        this.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
-
-
     }
 
     /**
@@ -42,7 +39,6 @@ public class Display extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDisplay = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
