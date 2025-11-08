@@ -257,16 +257,7 @@ public class TeacherRegistry extends javax.swing.JFrame {
 
         asigTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
 
@@ -531,7 +522,7 @@ private void cargarDoceTabla() {
                 return false;
             }
         };
-        String titulos[] = {"Id", "Asignatura", "Docente", "Grupo", "Día de la semana", "Turno"};
+        String titulos[] = {"Asignatura", "Docente", "Grupo", "Día de la semana", "Turno"};
         tablaModelAsig.setColumnIdentifiers(titulos);
         
         List<Asignatura> listaAsignatura = control.traerAsignaturas();
@@ -539,7 +530,6 @@ private void cargarDoceTabla() {
         if(listaAsignatura != null && !listaAsignatura.isEmpty()){
             for(Asignatura a: listaAsignatura){            
                 Object[] object = {
-                    a.getId(),
                     a.getNombreAsignatura(), 
                     a.getDocente().getNombreDocente(), 
                     a.getGrupo(), 
