@@ -289,7 +289,9 @@ public class AbsenceRegistry extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(27, 18, 0, 0);
         getContentPane().add(cbDocenteInasistencias, gridBagConstraints);
 
-        jLabel1.setText("Ingrese formato: yyyy-mm-dd");
+        jLabel1.setText("Ingrese las fechas en formato: yyyy-mm-dd");
+        jLabel1.setMaximumSize(new java.awt.Dimension(300, 16));
+        jLabel1.setMinimumSize(new java.awt.Dimension(300, 16));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
